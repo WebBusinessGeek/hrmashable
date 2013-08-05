@@ -1,0 +1,101 @@
+<%- model_class = Blog -%>
+
+<div class="span3">
+  <div class='row-fluid'>
+    <div class='span12'>
+      <h5>Most Viewed</h5>
+    </div>
+  </div>
+
+  <% @blogs.each do |blog| %>
+    <div class='row-fluid'>
+      <div class='span3'>
+        <%= link_to image_tag(blog.main_pic.url, width: '100%'), blog_path(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) if blog.main_pic.present? %>
+      </div>
+      <div class='span9'>
+        <div class='row-fluid'>
+          <div class='span12'>
+            <%= link_to blog.title.upcase, blog_path(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) if blog.main_pic.present? %>
+          </div>
+        </div>
+        <div class='row-fluid'>
+          <div class='span12'>
+            <%= link_to 'shares', blog_path(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) if blog.main_pic.present? %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div><!--/span-->
+
+<div class="span3">
+  <div class='row-fluid'>
+    <div class='span12'>
+      <h5>New</h5>
+    </div>
+  </div>
+
+  <% @blogs.each do |blog| %>
+    <div class='row-fluid'>
+      <div class='span12'>
+        <%= link_to image_tag(blog.main_pic.url, width: '100%'), blog_path(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) if blog.main_pic.present? %>
+      </div>
+    </div>
+    <div class='row-fluid'>
+      <div class='span12'>
+        <%= link_to blog.category.title.upcase, category_path(blog.category.slug) if blog.category.present? %>
+      </div>
+    </div>
+    <div class='row-fluid'>
+      <div class='span12'>
+        <%= link_to blog.title, blog_path(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) if blog.title.present? %>
+      </div>
+    </div>
+    <div class='row-fluid'>
+      <div class='span12'>
+        <%= blog.description if blog.description.present? %>
+      </div>
+    </div>
+    <div class='row-fluid'>
+      <div class='span12'>
+        <%= link_to 'shares', blog_path(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) %>
+      </div>
+    </div>
+  <% end %>
+</div><!--/span-->
+
+<div class="span5">
+  <div class='row-fluid'>
+    <div class='span12'>
+      <h5>Most Popular</h5>
+    </div>
+  </div>
+
+  <% @blogs.each do |blog| %>
+    <div class='row-fluid'>
+      <div class='span12'>
+        <%= link_to image_tag(blog.main_pic.url, width: '100%'), blog_path(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) if blog.main_pic.present? %>
+      </div>
+    </div>
+    <div class='row-fluid'>
+      <div class='span12'>
+        <%= link_to blog.category.title.upcase, category_path(blog.category.slug) if blog.category.present? %>
+      </div>
+    </div>
+    <div class='row-fluid'>
+      <div class='span12'>
+        <%= link_to blog.title, blog_path(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) if blog.title.present? %>
+      </div>
+    </div>
+    <div class='row-fluid'>
+      <div class='span12'>
+        <%= blog.description if blog.description.present? %>
+      </div>
+    </div>
+    <div class='row-fluid'>
+      <div class='span12'>
+        <%= link_to 'shares', blog_path(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) %>
+      </div>
+    </div>
+  <% end %>
+</div>

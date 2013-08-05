@@ -1,0 +1,280 @@
+<%- model_class = Blog -%>
+
+<div class='span9'>
+  <div class='row-fluid'>
+    <div class="span12">
+      <h6><%= @blog.category.title.upcase %></h6>
+    </div>
+  </div>
+
+  <div class='row-fluid'>
+    <div class="span12">
+      <h2><%= @blog.title.titleize %></h2>
+    </div>
+  </div>
+
+  <div class='row-fluid'>
+    <div class="span2">
+      shares
+    </div>
+  </div>
+
+  <div class='row-fluid'>
+    <div class="span12">
+      <%= image_tag(@blog.main_pic.url, width: '100%') if @blog.main_pic.present? %>
+    </div>
+  </div>
+
+  <div class='row-fluid'>
+    <div class='span2 offset2'>
+      <%= image_tag(@blog.author.profile_pic) if @blog.author.profile_pic.present? %>
+      </br
+      By <%= @blog.author.full_name %>
+      </br>
+      <hr>
+      8 hours ago
+    </div>
+
+    <div class='span8'>
+      <%= simple_format(@blog.description) if @blog.description.present? %>
+    </div>
+  </div>
+
+  <div class='row-fluid'>
+    <div class='span8 offset4'>
+      <b>Topics:
+        <% if @blog.tags.present? %>
+          <% @blog.tags.each do |tag| %>
+            <%= tag.title.upcase %> <% if @blog.tags.last != tag %>,<% end %>
+          <% end %>
+        <% end %>
+      </b>
+    </div>
+  </div>
+
+  <div class='row-fluid'>
+    <div class="span12">
+      <hr>
+    </div>
+  </div>
+
+  <div class='row-fluid'>
+    <div class='span8 offset4'>
+      <b><%= link_to 'Sign in', 'javascript:void(0);' %></b>
+      <span class='pull-right'>
+        <b><%= @blog.users.count %> people following</b>
+      </span>
+    </div>
+  </div>
+
+  <div class='row-fluid'>
+    <div class='span8 offset4'>
+      <textarea rows='4' class='field span12' id='comment_area'></textarea>
+    </div>
+  </div>
+
+  <div class='row-fluid'>
+    <div class='span8 offset4'>
+      <% current_user = User.find_by_id(3) %>
+      <span class='pull-left' id='follow_status'>
+        <% if current_user.following_blog?(@blog.id) %>
+          <%= link_to_function '+Unfollow', 'unfollow_blog()', class: 'btn btn-default' %>
+        <% else %>
+          <%= link_to_function '+Follow', 'follow_blog()', class: 'btn btn-default' %>
+        <% end %>
+      </span>
+      <span class='pull-right'>
+        <%= link_to_function 'POST COMMENT', 'postComment()', class: 'btn btn-default' %>
+      </span>
+    </div>
+  </div>
+
+  <div class='row-fluid' style='padding-top: 2em;'>
+    <div class='span8 offset4'>
+      <%= link_to 'Newest', 'javascript:void(0);' %> |
+      <%= link_to 'Oldest', 'javascript:void(0);' %> |
+      <%= link_to 'Top Comments', 'javascript:void(0);' %>
+      <hr style='margin: 5px; margin-bottom: 1em;'>
+      <% @comments.each do |comment| %>
+        <div class='row-fluid'>
+          <div class='span1'>
+            <%= image_tag(comment.user.profile_pic, width: '100%') if comment.user.present? %>
+          </div>
+          <div class='span11'>
+            <div class='row-fluid'>
+              <div class='span7'>
+                <%= comment.user.full_name if comment.user.present? %>
+              </div>
+              <div class='pull-right'>
+                3 minutes ago
+              </div>
+            </div>
+            <div class='row-fluid'>
+              <div class='span12'>
+                <%= simple_format(comment.message) if comment.message.present? %>
+              </div>
+            </div>
+            <div class='row-fluid'>
+              <div class='span6'>
+                <%= link_to 'Share', 'javascript:void(0);' %>
+                <%= link_to_function 'Delete', "deleteComment(#{comment.id})", style: 'margin-left: 0.4em;' %>
+              </div>
+              <div class='pull-right'>
+                <%= link_to 'Like', 'javascript:void(0);' %> /
+                <%= link_to_function 'Reply', "replyComment(#{comment.id})" %>
+              </div>
+            </div>
+
+            <% if comment.replies.size > 0 %>
+              <% comment.replies.each do |reply| %>
+                <div class='row-fluid'>
+                  <div class='span1'>
+                    <%= image_tag(reply.user.profile_pic, width: '100%') if reply.user.present? %>
+                  </div>
+                  <div class='span11'>
+                    <div class='row-fluid'>
+                      <div class='span7'>
+                        <%= reply.user.full_name if reply.user.present? %>
+                      </div>
+                      <div class='pull-right'>
+                        3 minutes ago
+                      </div>
+                    </div>
+                    <div class='row-fluid'>
+                      <div class='span12'>
+                        <%= simple_format(reply.message) if reply.message.present? %>
+                      </div>
+                    </div>
+                    <div class='row-fluid'>
+                      <div class='span6'>
+                        <%= link_to 'Share', 'javascript:void(0);' %>
+                        <%= link_to_function 'Delete', "deleteComment(#{reply.id})", style: 'margin-left: 0.4em;' %>
+                      </div>
+                      <div class='pull-right'>
+                        <%= link_to 'Like', 'javascript:void(0);' %> /
+                        <%= link_to_function 'Reply', "replyComment(#{reply.id})" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class='row-fluid'>
+    <div class='span12'>
+      <b>More in <%= @blog.category.title.titleize if @blog.category.present? %>:</b>
+    </div>
+  </div>
+
+  <div class='row-fluid'>
+    <div class="span12">
+      <hr>
+    </div>
+  </div>
+</div>
+
+<%= content_for :custom_javascripts do %>
+  function follow_blog() {
+    $.ajax({
+      url: '<%= follow_blog_path(@blog.id) %>',
+      type: 'GET',
+      success: function(response) {
+        $('#follow_status').html('<%= link_to_function '+Unfollow', 'unfollow_blog()', class: 'btn btn-default' %>');
+      },
+      error: function(response) {
+        console.log(response);
+      }
+    });
+  }
+
+  function unfollow_blog() {
+    $.ajax({
+      url: '<%= unfollow_blog_path(@blog.id) %>',
+      type: 'GET',
+      success: function(response) {
+        $('#follow_status').html('<%= link_to_function '+Follow', 'follow_blog()', class: 'btn btn-default' %>');
+      },
+      error: function(response) {
+        console.log(response);
+      }
+    });
+  }
+
+  function postComment() {
+    msg = $('#comment_area').val().trim();
+
+    if(msg != '') {
+      $.ajax({
+        url: '<%= post_comment_blog_path(@blog.id) %>',
+        type: 'GET',
+        data: {
+          user_id: 3,
+          message: msg
+        },
+        success: function(response) {
+          $('#follow_status').html('<%= link_to_function '+Follow', 'follow_blog()', class: 'btn btn-default' %>');
+        },
+        error: function(response) {
+          console.log(response);
+        }
+      });
+    }
+    else {
+      alert('It seems you\'re attempting to post an empty comment.')
+    }
+  }
+
+  function replyComment(id) {
+    msg = $('#comment_area').val().trim();
+
+    if(msg != '') {
+      $.ajax({
+        url: '<%= post_comment_blog_path(@blog.id) %>',
+        type: 'GET',
+        data: {
+          user_id: 3,
+          message: msg,
+          parent_comment_id: id
+        },
+        success: function(response) {
+          $('#follow_status').html('<%= link_to_function '+Follow', 'follow_blog()', class: 'btn btn-default' %>');
+        },
+        error: function(response) {
+          console.log(response);
+        }
+      });
+    }
+    else {
+      alert('It seems you\'re attempting to post an empty comment.')
+    }
+  }
+
+  function deleteComment(id) {
+    msg = $('#comment_area').val().trim();
+
+    if(msg != '') {
+      $.ajax({
+        url: '<%= delete_comment_blog_path(@blog.id) %>',
+        type: 'GET',
+        data: {
+          user_id: 3,
+          comment_id: id
+        },
+        success: function(response) {
+          $('#follow_status').html('<%= link_to_function '+Follow', 'follow_blog()', class: 'btn btn-default' %>');
+        },
+        error: function(response) {
+          console.log(response);
+        }
+      });
+    }
+    else {
+      alert('It seems you\'re attempting to post an empty comment.')
+    }
+  }
+<% end %>

@@ -1,0 +1,50 @@
+<%- model_class = Category -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<div class="span3">
+  <div class="well sidebar-nav">
+    <ul class="nav nav-list">
+      <li class="nav-header">The New Stuff</li>
+      <li><%= link_to "Link1", "javascript:void(0);"  %></li>
+      <li><%= link_to "Link2", "javascript:void(0);"  %></li>
+      <li><%= link_to "Link3", "javascript:void(0);"  %></li>
+    </ul>
+  </div><!--/.well -->
+</div><!--/span-->
+
+<div class="span3">
+  <div class="well sidebar-nav">
+    <ul class="nav nav-list">
+      <li class="nav-header">The Next Big Thing</li>
+      <li><%= link_to "Link1", "javascript:void(0);"  %></li>
+      <li><%= link_to "Link2", "javascript:void(0);"  %></li>
+      <li><%= link_to "Link3", "javascript:void(0);"  %></li>
+    </ul>
+  </div><!--/.well -->
+</div><!--/span-->
+
+<div class="span4">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= model_class.human_attribute_name(:title) %></th>
+        <th><%= model_class.human_attribute_name(:description) %></th>
+        <th><%= model_class.human_attribute_name(:slug) %></th>
+        <th><%= model_class.human_attribute_name(:author_id) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @blogs.each do |blog| %>
+        <tr>
+          <td><%= image_tag blog.main_pic.url %></td>
+          <td><%= link_to blog.title, blog_path(blog.created_at.strftime("%Y"), blog.created_at.strftime("%m"), blog.created_at.strftime("%d"), blog.slug) %></td>
+          <td><%= blog.description %></td>
+          <td><%= blog.slug %></td>
+          <td><%= blog.author.username %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
