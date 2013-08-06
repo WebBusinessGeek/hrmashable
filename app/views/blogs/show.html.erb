@@ -32,7 +32,7 @@
       By <%= @blog.author.full_name %>
       </br>
       <hr>
-      8 hours ago
+      <%= Time.diff(Time.now, @blog.updated_at)[:diff] %> ago
     </div>
 
     <div class='span8'>
@@ -60,7 +60,9 @@
 
   <div class='row-fluid'>
     <div class='span8 offset4'>
-      <b><%= link_to 'Sign in', 'javascript:void(0);' %></b>
+      <% if !current_user %>
+        <%= link_to 'Sign in', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
+      <% end %>
       <span class='pull-right'>
         <b><%= @blog.users.count %> people following</b>
       </span>
@@ -106,7 +108,7 @@
                 <%= comment.user.full_name if comment.user.present? %>
               </div>
               <div class='pull-right'>
-                3 minutes ago
+                <%= Time.diff(Time.now, comment.updated_at)[:diff] %> ago
               </div>
             </div>
             <div class='row-fluid'>
@@ -125,40 +127,7 @@
               </div>
             </div>
 
-            <% if comment.replies.size > 0 %>
-              <% comment.replies.each do |reply| %>
-                <div class='row-fluid'>
-                  <div class='span1'>
-                    <%= image_tag(reply.user.profile_pic, width: '100%') if reply.user.present? %>
-                  </div>
-                  <div class='span11'>
-                    <div class='row-fluid'>
-                      <div class='span7'>
-                        <%= reply.user.full_name if reply.user.present? %>
-                      </div>
-                      <div class='pull-right'>
-                        3 minutes ago
-                      </div>
-                    </div>
-                    <div class='row-fluid'>
-                      <div class='span12'>
-                        <%= simple_format(reply.message) if reply.message.present? %>
-                      </div>
-                    </div>
-                    <div class='row-fluid'>
-                      <div class='span6'>
-                        <%= link_to 'Share', 'javascript:void(0);' %>
-                        <%= link_to_function 'Delete', "deleteComment(#{reply.id})", style: 'margin-left: 0.4em;' %>
-                      </div>
-                      <div class='pull-right'>
-                        <%= link_to 'Like', 'javascript:void(0);' %> /
-                        <%= link_to_function 'Reply', "replyComment(#{reply.id})" %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
+            <%= get_all_children(comment) %>
           </div>
         </div>
       <% end %>

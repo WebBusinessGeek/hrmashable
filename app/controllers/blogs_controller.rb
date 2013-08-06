@@ -5,7 +5,7 @@ class BlogsController < InheritedResources::Base
 
   def show
     @blog = Blog.find_by_slug(params[:id])
-    @comments = @blog.comments.where(parent_comment_id: 0)
+    @comments = Comment.only_parent_comments(@blog)
   end
 
   def follow_blog

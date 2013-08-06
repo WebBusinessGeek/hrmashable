@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130803202718) do
+ActiveRecord::Schema.define(:version => 20130806092523) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -46,28 +46,38 @@ ActiveRecord::Schema.define(:version => 20130803202718) do
     t.date     "birthday"
     t.integer  "zipcode"
     t.text     "about_me"
+    t.string   "profile_pic"
     t.integer  "role",                   :default => 1,  :null => false
     t.string   "slug"
     t.string   "type"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "profile_pic"
   end
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
   add_index "admin_users", ["slug"], :name => "index_admin_users_on_slug", :unique => true
 
+  create_table "authorizations", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
   create_table "blogs", :force => true do |t|
-    t.string   "title"
+    t.string   "title",                         :null => false
     t.text     "description"
+    t.string   "main_pic"
     t.string   "slug"
     t.integer  "visitors_count", :default => 0
-    t.integer  "author_id"
-    t.integer  "category_id"
+    t.integer  "author_id",                     :null => false
+    t.integer  "category_id",                   :null => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
-    t.string   "main_pic"
   end
 
   add_index "blogs", ["slug"], :name => "index_blogs_on_slug", :unique => true
@@ -83,7 +93,7 @@ ActiveRecord::Schema.define(:version => 20130803202718) do
   end
 
   create_table "categories", :force => true do |t|
-    t.string   "title"
+    t.string   "title",                             :null => false
     t.string   "slug"
     t.integer  "parent_category_id", :default => 0
     t.datetime "created_at",                        :null => false
@@ -93,16 +103,16 @@ ActiveRecord::Schema.define(:version => 20130803202718) do
   add_index "categories", ["slug"], :name => "index_categories_on_slug", :unique => true
 
   create_table "comments", :force => true do |t|
-    t.text     "message"
-    t.integer  "user_id"
-    t.integer  "blog_id"
-    t.integer  "parent_comment_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.text     "message",                          :null => false
+    t.integer  "user_id",                          :null => false
+    t.integer  "blog_id",                          :null => false
+    t.integer  "parent_comment_id", :default => 0
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   create_table "tags", :force => true do |t|
-    t.string   "title"
+    t.string   "title",      :null => false
     t.string   "slug"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

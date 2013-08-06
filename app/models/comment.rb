@@ -7,4 +7,6 @@ class Comment < ActiveRecord::Base
   belongs_to :parent_comment, class_name: 'Comment'
 
   validates :message, :user_id, :blog_id, presence: true
+
+  scope :only_parent_comments, ->(blog) { where(blog_id: blog.id, parent_comment_id: 0) }
 end

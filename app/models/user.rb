@@ -1,6 +1,9 @@
 class User < AdminUser
   has_and_belongs_to_many :blogs
   has_many :comments
+  has_many :authorizations
+
+  default_scope { where(role: USER) }
 
   def full_name
     "#{self.first_name} #{self.last_name}"
