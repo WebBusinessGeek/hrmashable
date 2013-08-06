@@ -75,7 +75,7 @@ class User < AdminUser
       if comment.present?
         if comment.replies.size > 0
           comment.replies.each do |reply|
-            reply.destroy
+            delete_comment(blog_id, reply.id)
           end
           comment.destroy
         else
