@@ -77,9 +77,8 @@
 
   <div class='row-fluid'>
     <div class='span8 offset4'>
-      <% current_user = User.find_by_id(3) %>
       <span class='pull-left' id='follow_status'>
-        <% if current_user.following_blog?(@blog.id) %>
+        <% if current_user && current_user.following_blog?(@blog.id) %>
           <%= link_to_function '+Unfollow', 'unfollow_blog()', class: 'btn btn-default' %>
         <% else %>
           <%= link_to_function '+Follow', 'follow_blog()', class: 'btn btn-default' %>
