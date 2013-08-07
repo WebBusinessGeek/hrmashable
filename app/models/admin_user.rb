@@ -5,8 +5,11 @@ class AdminUser < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :about_me, :birthday, :email, :first_name, :gender, :last_name, :role, :username, :zipcode, :password, :password_confirmation, :remember_me
+  attr_accessible :about_me, :birthday, :email, :first_name, :gender, :last_name, :role, :username, :zipcode, :password, :password_confirmation,
+   :remember_me, :slug, :profile_pic
 
   extend FriendlyId
   friendly_id :username, use: :slugged
+
+  mount_uploader :profile_pic, UserProfilePicUploader
 end
