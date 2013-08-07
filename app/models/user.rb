@@ -10,7 +10,7 @@ class User < AdminUser
   end
 
   def following_blog?(blog_id)
-    blog ||= Blog.find_by_id(blog_id)
+    blog ||= Blog.find_by_slug(blog_id)
 
     if blog.present?
       blog_users ||= blog.users
@@ -25,7 +25,7 @@ class User < AdminUser
   end
 
   def follow_blog(blog_id)
-    blog ||= Blog.find_by_id(blog_id)
+    blog ||= Blog.find_by_slug(blog_id)
 
     if blog.present?
       if self.following_blog?(blog_id)
@@ -40,7 +40,7 @@ class User < AdminUser
   end
 
   def unfollow_blog(blog_id)
-    blog ||= Blog.find_by_id(blog_id)
+    blog ||= Blog.find_by_slug(blog_id)
 
     if blog.present?
       if self.following_blog?(blog_id)
@@ -55,7 +55,7 @@ class User < AdminUser
   end
 
   def post_comment(blog_id, msg, parent_comment_id = 0)
-    blog ||= Blog.find_by_id(blog_id)
+    blog ||= Blog.find_by_slug(blog_id)
 
     if blog.present?
       comment = Comment.create(message: msg, user_id: self.id, blog_id: blog_id, parent_comment_id: parent_comment_id)
@@ -67,7 +67,7 @@ class User < AdminUser
   end
 
   def delete_comment(blog_id, comment_id)
-    blog ||= Blog.find_by_id(blog_id)
+    blog ||= Blog.find_by_slug(blog_id)
 
     if blog.present?
       comment = blog.comments.find_by_id(comment_id)

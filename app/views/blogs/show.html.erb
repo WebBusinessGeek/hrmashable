@@ -78,7 +78,7 @@
   <div class='row-fluid'>
     <div class='span8 offset4'>
       <span class='pull-left' id='follow_status'>
-        <% if current_user && current_user.following_blog?(@blog.id) %>
+        <% if current_user && current_user.following_blog?(@blog.slug) %>
           <%#= link_to_function '+Unfollow', 'unfollow_blog()', class: 'btn btn-default' %>
           <%= link_to '+Unfollow', unfollow_blog_path(@blog), class: 'btn btn-default', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
         <% else %>
