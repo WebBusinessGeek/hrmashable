@@ -81,6 +81,12 @@
         <%= yield %>
       </div><!--/row-->
 
+      <div class='row-fluid'>
+        <div class='span6 offset4'>
+          <%= yield(:pagination) %>
+        </div>
+      </div>
+
       <footer>
         <hr>
         <p>&copy; Company 2013</p>

@@ -2,7 +2,7 @@ class BlogsController < InheritedResources::Base
   before_filter :require_login, except: [:index, :show]
 
   def index
-    @blogs = Blog.all
+    @blogs = Blog.order('created_at desc').page(params[:page]).per_page(10)
   end
 
   def show

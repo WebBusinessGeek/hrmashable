@@ -1,8 +1,9 @@
 module BlogsHelper
   def get_all_children(comment)
     if comment.replies.size > 0
-      simple_format(comment.replies.each do |reply|
-        concat(content_tag(:div, class: 'row-fluid') do
+      content = ''
+      comment.replies.each do |reply|
+        content << content_tag(:div, class: 'row-fluid') do
           concat(content_tag(:div, class: 'span1') do
             image_tag(reply.user.profile_pic, width: '100%') if reply.user.present?
           end)
@@ -33,8 +34,9 @@ module BlogsHelper
             end)
             concat(get_all_children(reply))
           end)
-        end)
-      end.join)
+        end
+      end
+      return content.html_safe
     end
   end
 

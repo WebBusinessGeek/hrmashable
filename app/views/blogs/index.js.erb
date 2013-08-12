@@ -1,0 +1,9 @@
+$('#left_side_blogs').append("<%= j render 'left_blogs', :blogs => @blogs %>")
+$('#center_blogs').append("<%= j render 'center_blogs', :blogs => @blogs %>")
+$('#right_side_blogs').append("<%= j render 'right_blogs', :blogs => @blogs %>")
+
+<% if @blogs.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@blogs) %>');
+<% else %>
+  $('.pagination').remove();
+<% end %>
