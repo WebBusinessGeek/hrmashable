@@ -92,10 +92,22 @@
 
   <div class='row-fluid' style='padding-top: 2em;'>
     <div class='span8 offset4'>
-      <%= link_to 'Newest', 'javascript:void(0);' %> |
-      <%= link_to 'Oldest', 'javascript:void(0);' %> |
+      <% if !params[:direction].present? || (params[:direction].present? && params[:direction].downcase == 'desc') %>
+        <strong><%= link_to 'Newest', '?direction=desc' %></strong> |
+      <% else %>
+        <%= link_to 'Newest', '?direction=desc' %> |
+      <% end %>
+
+      <% if params[:direction].present? && params[:direction].downcase == 'asc' %>
+        <strong><%= link_to 'Oldest', '?direction=asc' %></strong> |
+      <% else %>
+        <%= link_to 'Oldest', '?direction=asc' %> |
+      <% end %>
+
       <%= link_to 'Top Comments', 'javascript:void(0);' %>
+
       <hr style='margin: 5px; margin-bottom: 1em;'>
+
       <% @comments.each do |comment| %>
         <div class='row-fluid'>
           <div class='span1'>

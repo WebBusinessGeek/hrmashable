@@ -7,7 +7,11 @@ class BlogsController < InheritedResources::Base
 
   def show
     @blog = Blog.find_by_slug(params[:id])
-    @comments = Comment.only_parent_comments(@blog)
+    if params[:direction].present?
+      @comments = Comment.order("updated_at #{params[:direction].downcase}").only_parent_comments(@blog)
+    else
+      @comments = Comment.order('updated_at desc').only_parent_comments(@blog)
+    end
   end
 
   def follow_blog
