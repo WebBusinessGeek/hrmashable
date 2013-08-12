@@ -20,7 +20,7 @@ module BlogsHelper
                 reply.user.full_name if reply.user.present?
               end)
               concat(content_tag(:div, class: 'pull-right') do
-                last_updated_at(comment.updated_at)
+                last_updated_at(reply.updated_at)
               end)
             end)
             concat(content_tag(:div, class: 'row-fluid') do
@@ -30,13 +30,31 @@ module BlogsHelper
             end)
             concat(content_tag(:div, class: 'row-fluid') do
               concat(content_tag(:div, class: 'span6') do
-                concat(link_to 'Share', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal')
-                concat(link_to_function 'Delete', "deleteComment(#{reply.id})", style: 'margin-left: 0.4em;')
+                if current_user
+                  concat(link_to 'Share', 'javascript:void(0);')
+                  # concat(link_to_function 'Delete', "deleteComment(#{reply.id})", style: 'margin-left: 0.4em;')
+                  concat(link_to 'Delete', delete_comment_blog_path(@blog.id, comment_id: reply.id), style: 'margin-left: 0.4em;')
+                else
+                  concat(link_to 'Share', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal')
+                  concat(link_to 'Delete', 'javascript:void(0);', style: 'margin-left: 0.4em;', :'data-toggle' => 'modal', :'data-target' => '#loginModal')
+                end
               end)
               concat(content_tag(:div, class: 'pull-right') do
-                concat(link_to 'Like', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal')
-                concat(' / ')
-                concat(link_to_function 'Reply', "replyComment(#{reply.id})")
+                if current_user
+                  if current_user.is_like(reply)
+                    # concat(link_to_function 'Unlike', "unlikeComment(#{reply.id})")
+                    concat(link_to 'Unlike', unlike_comment_blog_path(@blog.id, comment_id: reply.id))
+                  else
+                    # concat(link_to_function 'Like', "likeComment(#{reply.id})")
+                    concat(link_to 'Like', like_comment_blog_path(@blog.id, comment_id: reply.id))
+                  end
+                  concat(' / ')
+                  concat(link_to_function 'Reply', "replyComment(#{reply.id})")
+                else
+                  concat(link_to 'Like', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal')
+                  concat(' / ')
+                  concat(link_to 'Reply', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal')
+                end
               end)
             end)
             concat(get_all_children(reply))

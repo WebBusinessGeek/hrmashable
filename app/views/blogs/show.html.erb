@@ -78,21 +78,31 @@
   <div class='row-fluid'>
     <div class='span8 offset4'>
       <span class='pull-left' id='follow_status'>
-        <% if current_user && current_user.following_blog?(@blog.id) %>
-          <%= link_to_function '+Unfollow', 'unfollow_blog()', class: 'btn btn-default' %>
+        <% if current_user %>
+          <% if current_user.following_blog?(@blog.id) %>
+            <%#= link_to_function '+Unfollow', 'unfollow_blog()', class: 'btn btn-default' %>
+            <%= link_to '+Unfollow', unfollow_blog_path(@blog.id), class: 'btn btn-default' %>
+          <% else %>
+            <%#= link_to_function '+Follow', 'follow_blog()', class: 'btn btn-default' %>
+            <%= link_to '+Follow', follow_blog_path(@blog.id), class: 'btn btn-default' %>
+          <% end %>
         <% else %>
-          <%= link_to_function '+Follow', 'follow_blog()', class: 'btn btn-default' %>
+          <%= link_to '+Follow', 'javascript:void(0);', class: 'btn btn-default', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
         <% end %>
       </span>
       <span class='pull-right'>
-        <%= link_to_function 'POST COMMENT', 'postComment()', class: 'btn btn-default' %>
+        <% if current_user %>
+          <%= link_to_function 'POST COMMENT', 'postComment()', class: 'btn btn-default' %>
+        <% else %>
+          <%= link_to 'POST COMMENT', 'javascript:void(0);', class: 'btn btn-default', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
+        <% end %>
       </span>
     </div>
   </div>
 
   <div class='row-fluid' style='padding-top: 2em;'>
     <div class='span8 offset4'>
-      <% if !params[:direction].present? || (params[:direction].present? && params[:direction].downcase == 'desc') %>
+      <% if params[:direction].present? && params[:direction].downcase == 'desc' %>
         <strong><%= link_to 'Newest', '?direction=desc' %></strong> |
       <% else %>
         <%= link_to 'Newest', '?direction=desc' %> |
@@ -104,7 +114,11 @@
         <%= link_to 'Oldest', '?direction=asc' %> |
       <% end %>
 
-      <%= link_to 'Top Comments', 'javascript:void(0);' %>
+      <% if params[:basis].present? && params[:basis].downcase == 'top_comments' %>
+        <strong><%= link_to 'Top Comments', '?basis=top_comments' %></strong> |
+      <% else %>
+        <%= link_to 'Top Comments', '?basis=top_comments' %> |
+      <% end %>
 
       <hr style='margin: 5px; margin-bottom: 1em;'>
 
@@ -129,12 +143,29 @@
             </div>
             <div class='row-fluid'>
               <div class='span6'>
-                <%= link_to 'Share', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
-                <%= link_to_function 'Delete', "deleteComment(#{comment.id})", style: 'margin-left: 0.4em;' %>
+                <% if current_user %>
+                  <%= link_to 'Share', 'javascript:void(0);' %>
+                  <%#= link_to_function 'Delete', "deleteComment(#{comment.id})", style: 'margin-left: 0.4em;' %>
+                  <%= link_to 'Delete', delete_comment_blog_path(@blog.id, comment_id: comment.id), style: 'margin-left: 0.4em;' %>
+                <% else %>
+                  <%= link_to 'Share', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
+                  <%= link_to 'Delete', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
+                <% end %>
               </div>
               <div class='pull-right'>
-                <%= link_to 'Like', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %> /
-                <%= link_to_function 'Reply', "replyComment(#{comment.id})" %>
+                <% if current_user %>
+                  <% if current_user.is_like(comment) %>
+                    <!-- <%#= link_to_function 'Unlike', "unlikeComment(#{comment.id})" %> / -->
+                    <%= link_to 'Unlike', unlike_comment_blog_path(@blog.id, comment_id: comment.id) %> /
+                  <% else %>
+                    <!-- <%#= link_to_function 'Like', "likeComment(#{comment.id})" %> / -->
+                    <%= link_to 'Like', like_comment_blog_path(@blog.id, comment_id: comment.id) %> /
+                  <% end %>
+                  <%= link_to_function 'Reply', "replyComment(#{comment.id})" %>
+                <% else %>
+                  <%= link_to 'Like', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %> /
+                  <%= link_to 'Reply', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
+                <% end %>
               </div>
             </div>
 
@@ -189,20 +220,20 @@
     msg = $('#comment_area').val().trim();
 
     if(msg != '') {
-      $.ajax({
-        url: '<%= post_comment_blog_path(@blog.id) %>',
-        type: 'GET',
-        data: {
-          user_id: 3,
-          message: msg
-        },
-        success: function(response) {
-          $('#follow_status').html('<%= link_to_function '+Follow', 'follow_blog()', class: 'btn btn-default' %>');
-        },
-        error: function(response) {
-          console.log(response);
-        }
-      });
+      // $.ajax({
+      //   url: '<%= post_comment_blog_path(@blog.id) %>',
+      //   type: 'GET',
+      //   data: {
+      //     message: msg
+      //   },
+      //   success: function(response) {
+      //     $('#follow_status').html('<%= link_to_function '+Follow', 'follow_blog()', class: 'btn btn-default' %>');
+      //   },
+      //   error: function(response) {
+      //     console.log(response);
+      //   }
+      // });
+      location.href = '/blogs/<%= @blog.id %>/post_comment?message=' + msg;
     }
     else {
       alert('It seems you\'re attempting to post an empty comment.')
@@ -213,21 +244,21 @@
     msg = $('#comment_area').val().trim();
 
     if(msg != '') {
-      $.ajax({
-        url: '<%= post_comment_blog_path(@blog.id) %>',
-        type: 'GET',
-        data: {
-          user_id: 3,
-          message: msg,
-          parent_comment_id: id
-        },
-        success: function(response) {
-          $('#follow_status').html('<%= link_to_function '+Follow', 'follow_blog()', class: 'btn btn-default' %>');
-        },
-        error: function(response) {
-          console.log(response);
-        }
-      });
+      // $.ajax({
+      //   url: '<%= post_comment_blog_path(@blog.id) %>',
+      //   type: 'GET',
+      //   data: {
+      //     message: msg,
+      //     parent_comment_id: id
+      //   },
+      //   success: function(response) {
+      //     $('#follow_status').html('<%= link_to_function '+Follow', 'follow_blog()', class: 'btn btn-default' %>');
+      //   },
+      //   error: function(response) {
+      //     console.log(response);
+      //   }
+      // });
+      location.href = '/blogs/<%= @blog.id %>/post_comment?message=' + msg + '&parent_comment_id=' + id;
     }
     else {
       alert('It seems you\'re attempting to post an empty comment.')
@@ -239,11 +270,42 @@
       url: '<%= delete_comment_blog_path(@blog.id) %>',
       type: 'GET',
       data: {
-        user_id: 3,
         comment_id: id
       },
       success: function(response) {
         $('#follow_status').html('<%= link_to_function '+Follow', 'follow_blog()', class: 'btn btn-default' %>');
+      },
+      error: function(response) {
+        console.log(response);
+      }
+    });
+  }
+
+  function likeComment(id) {
+    $.ajax({
+      url: '<%= like_comment_blog_path(@blog.id) %>',
+      type: 'GET',
+      data: {
+        comment_id: id
+      },
+      success: function(response) {
+        console.log(response);
+      },
+      error: function(response) {
+        console.log(response);
+      }
+    });
+  }
+
+  function unlikeComment(id) {
+    $.ajax({
+      url: '<%= unlike_comment_blog_path(@blog.id) %>',
+      type: 'GET',
+      data: {
+        comment_id: id
+      },
+      success: function(response) {
+        console.log(response);
       },
       error: function(response) {
         console.log(response);

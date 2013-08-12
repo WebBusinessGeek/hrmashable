@@ -7,6 +7,8 @@ MashableBlog::Application.routes.draw do
       get 'unfollow_blog', as: 'unfollow'
       get 'post_comment', as: 'post_comment'
       get 'delete_comment', as: 'delete_comment'
+      get 'like_comment', as: 'like_comment'
+      get 'unlike_comment', as: 'unlike_comment'
     end
   end
 

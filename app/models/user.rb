@@ -1,4 +1,6 @@
 class User < AdminUser
+  acts_as_liker
+
   has_and_belongs_to_many :blogs
   has_many :comments
   has_many :authorizations
