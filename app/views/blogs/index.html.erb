@@ -8,7 +8,7 @@
   </div>
 
   <div id='left_side_blogs'>
-    <%= render 'left_blogs', :blogs => @blogs %>
+    <%= render 'left_blogs', :blogs => @left_blogs %>
   </div>
 </div><!--/span-->
 
@@ -20,7 +20,7 @@
   </div>
 
   <div id='center_blogs'>
-    <%= render 'center_blogs', :blogs => @blogs %>
+    <%= render 'center_blogs', :blogs => @center_blogs %>
   </div>
 </div><!--/span-->
 
@@ -32,10 +32,6 @@
   </div>
 
   <div id='right_side_blogs'>
-    <%= render 'right_blogs', :blogs => @blogs %>
+    <%= render 'right_blogs', :blogs => @right_blogs %>
   </div>
 </div>
-
-<% content_for(:pagination) do %>
-  <%= will_paginate @blogs %>
-<% end %>

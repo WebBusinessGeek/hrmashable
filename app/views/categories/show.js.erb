@@ -1,9 +1,21 @@
-$('#left_side_blogs').append("<%= j render 'left_blogs', :blogs => @blogs %>")
-$('#center_blogs').append("<%= j render 'center_blogs', :blogs => @blogs %>")
-$('#right_side_blogs').append("<%= j render 'right_blogs', :blogs => @blogs %>")
+$('#left_side_blogs').append("<%= j render 'left_blogs', :blogs => @left_blogs %>")
+$('#center_blogs').append("<%= j render 'center_blogs', :blogs => @center_blogs %>")
+$('#right_side_blogs').append("<%= j render 'right_blogs', :blogs => @right_blogs %>")
 
-<% if @blogs.next_page %>
-  $('.pagination').replaceWith('<%= j will_paginate(@blogs) %>');
+<% if @left_blogs.next_page %>
+  $('#left_side_blogs .pagination').replaceWith('<%= j will_paginate(@left_blogs) %>');
 <% else %>
-  $('.pagination').remove();
+  $('#left_side_blogs .pagination').remove();
+<% end %>
+
+<% if @center_blogs.next_page %>
+  $('#center_blogs .pagination').replaceWith('<%= j will_paginate(@center_blogs) %>');
+<% else %>
+  $('#center_blogs .pagination').remove();
+<% end %>
+
+<% if @right_blogs.next_page %>
+  $('#right_side_blogs .pagination').replaceWith('<%= j will_paginate(@right_blogs) %>');
+<% else %>
+  $('#right_side_blogs .pagination').remove();
 <% end %>

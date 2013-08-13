@@ -1,6 +1,8 @@
 class CategoriesController < ApplicationController
   def show
     @category ||= Category.find_by_slug(params[:id])
-    @blogs ||= @category.blogs.text_search(params[:query]).order('created_at desc').page(params[:page]).per_page(10) if @category.present?
+    @left_blogs ||= @category.blogs.text_search(params[:query]).order('visitors_count desc').page(params[:page]).per_page(5) if @category.present?
+    @center_blogs ||= @category.blogs.text_search(params[:query]).order('created_at desc').page(params[:page]).per_page(5) if @category.present?
+    @right_blogs ||= @category.blogs.text_search(params[:query]).order('created_at desc').page(params[:page]).per_page(5) if @category.present?
   end
 end
