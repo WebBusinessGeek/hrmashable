@@ -46,6 +46,8 @@
       <% end %>
 
       <%= menu_group pull: :right do %>
+        <%= link_to 'Search', 'javascript:void(0);', id: 'openSearchDialog', class: 'btn', :'data-html' => true, :'data-placement' => 'bottom', :'data-trigger' => 'click', :'data-content' => "<form method='get' src='#{blogs_path}'><input type='text' name='query' id='query' class='form-control'><input type='submit' value='Submit' class='btn btn-default'></form>" %>
+
         <% if current_user %>
           <%= link_to 'Sign out', signout_path, class: 'btn btn-default', style: 'margin-left: 1em;' %>
         <% else %>
@@ -68,11 +70,6 @@
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
-
-      <form class='navbar-form pull-right'>
-        <input type='text' class='form-control'>
-        <button type="submit" class="btn btn-default">Search</button>
-      </form>
     <% end %>
 
     <div class="container-fluid">
@@ -98,6 +95,10 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
     <%= javascript_tag defer: 'defer' do -%>
+      $(function() {
+        $('#openSearchDialog').popover();
+      });
+
       <%= yield :custom_javascripts %>
     <% end %>
   </body>

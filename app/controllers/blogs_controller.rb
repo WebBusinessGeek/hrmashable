@@ -2,11 +2,12 @@ class BlogsController < InheritedResources::Base
   before_filter :require_login, except: [:index, :show]
 
   def index
-    @blogs ||= Blog.order('created_at desc').page(params[:page]).per_page(10)
+    @blogs ||= Blog.text_search(params[:query]).order('created_at desc').page(params[:page]).per_page(10)
   end
 
   def show
     @blog ||= Blog.find_by_slug(params[:id])
+
     if params[:direction].present?
       @comments ||= @blog.comments.order("updated_at #{params[:direction].downcase}").only_parent_comments
     # elsif params[:basis].present?

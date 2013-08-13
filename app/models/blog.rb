@@ -13,4 +13,12 @@ class Blog < ActiveRecord::Base
   has_many :comments
 
   validates :title, :author_id, :category_id, presence: true
+
+  def self.text_search(query)
+    if query.present?
+      where("title @@ :q or description @@ :q", q: sanitize(query))
+    else
+      scoped
+    end
+  end
 end
