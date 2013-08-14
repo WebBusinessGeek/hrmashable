@@ -103,7 +103,7 @@
   <div class='row-fluid' style='padding-top: 2em;'>
     <div class='span8 offset4'>
       <% if (!params[:basis].present? && !params[:direction].present?) || (params[:direction].present? && params[:direction].downcase == 'desc') %>
-        <strong><%= link_to_unless_current 'Newest', '?direction=desc' %></strong> |
+        <strong><%= link_to 'Newest', '?direction=desc' %></strong> |
       <% else %>
         <%= link_to 'Newest', '?direction=desc' %> |
       <% end %>
