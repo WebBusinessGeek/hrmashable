@@ -70,6 +70,8 @@ module BlogsHelper
       "#{Time.diff(Time.now, time, '%y')[:diff]} ago"
     elsif Time.diff(Time.now, time)[:month] > 0
       "#{Time.diff(Time.now, time, '%M')[:diff]} ago"
+    elsif Time.diff(Time.now, time)[:week] > 0
+      "#{Time.diff(Time.now, time, '%w')[:diff]} ago"
     elsif Time.diff(Time.now, time)[:day] > 0
       "#{Time.diff(Time.now, time, '%d')[:diff]} ago"
     elsif Time.diff(Time.now, time)[:hour] > 0

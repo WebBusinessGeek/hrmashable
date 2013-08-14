@@ -14,6 +14,8 @@ class Blog < ActiveRecord::Base
 
   validates :title, :author_id, :category_id, presence: true
 
+  scope :sort_by_comments, -> { joins('LEFT OUTER JOIN comments ON comments.blog_id = blogs.id').group('blogs.id').order('count(comments.id) DESC') }
+
   def self.text_search(query)
     if query.present?
       where("title @@ :q or description @@ :q", q: sanitize(query))
