@@ -1,37 +1,39 @@
 <%- model_class = Blog -%>
 
-<div class="span3" style='border: 1px solid; padding: 4px;'>
-  <div class='row-fluid'>
-    <div class='span12' style='background-color: rgb(42,164,207)'>
-      <h5>Most Viewed</h5>
+<div class='row-fluid'>
+  <div class="span3" style='border: 1px solid; padding: 4px;'>
+    <div class='row-fluid'>
+      <div class='span12' style='background-color: rgb(42,164,207)'>
+        <h5>Most Viewed</h5>
+      </div>
     </div>
-  </div>
 
-  <div id='left_side_blogs'>
-    <%= render 'left_blogs', :blogs => @left_blogs %>
-  </div>
-</div><!--/span-->
-
-<div class="span3" style='border: 1px solid; padding: 4px;'>
-  <div class='row-fluid'>
-    <div class='span12' style='background-color: rgb(42,164,207)'>
-      <h5>New</h5>
+    <div id='left_side_blogs'>
+      <%= render 'left_blogs', :blogs => @left_blogs %>
     </div>
-  </div>
+  </div><!--/span-->
 
-  <div id='center_blogs'>
-    <%= render 'center_blogs', :blogs => @center_blogs %>
-  </div>
-</div><!--/span-->
-
-<div class="span5" style='border: 1px solid; padding: 4px;'>
-  <div class='row-fluid'>
-    <div class='span12' style='background-color: rgb(42,164,207)'>
-      <h5>Most Popular</h5>
+  <div class="span4" style='border: 1px solid; padding: 4px;'>
+    <div class='row-fluid'>
+      <div class='span12' style='background-color: rgb(42,164,207)'>
+        <h5>New</h5>
+      </div>
     </div>
-  </div>
 
-  <div id='right_side_blogs'>
-    <%= render 'right_blogs', :blogs => @right_blogs %>
+    <div id='center_blogs'>
+      <%= render 'center_blogs', :blogs => @center_blogs %>
+    </div>
+  </div><!--/span-->
+
+  <div class="span5" style='border: 1px solid; padding: 4px;'>
+    <div class='row-fluid'>
+      <div class='span12' style='background-color: rgb(42,164,207)'>
+        <h5>Most Popular</h5>
+      </div>
+    </div>
+
+    <div id='right_side_blogs'>
+      <%= render 'right_blogs', :blogs => @right_blogs %>
+    </div>
   </div>
 </div>

@@ -73,16 +73,9 @@
     <% end %>
 
     <div class="container-fluid">
-      <div class="row-fluid">
-        <%= bootstrap_flash %>
-        <%= yield %>
-      </div><!--/row-->
+      <%= bootstrap_flash %>
 
-      <div class='row-fluid'>
-        <div class='span6 offset4'>
-          <%= yield(:pagination) %>
-        </div>
-      </div>
+      <%= yield %>
 
       <footer>
         <hr>
@@ -93,8 +86,14 @@
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "application" %>
+    <%= javascript_tag do -%>
+      var __st_loadLate=true;
+    <% end %>
+    <%= javascript_include_tag "application" -%>
     <%= javascript_tag defer: 'defer' do -%>
+      var switchTo5x=true;
+      stLight.options({publisher: "ur-eaeb65d0-be5a-d951-5cc-af9aa51cc92e", doNotHash: true, doNotCopy: true, hashAddressBar: false});
+
       $(function() {
         $('#openSearchDialog').popover();
       });

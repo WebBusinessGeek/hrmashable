@@ -8,14 +8,20 @@ class BlogsController < InheritedResources::Base
   end
 
   def show
-    @blog ||= Blog.find_by_slug(params[:id])
+    @blog ||= Blog.find_by_slug(params[:id]) if params[:id].present?
 
-    if params[:direction].present?
-      @comments ||= @blog.comments.order("updated_at #{params[:direction].downcase}").only_parent_comments
-    elsif params[:basis].present?
-      @comments ||= @blog.comments.sort_by_top_comments.only_parent_comments
-    else
-      @comments ||= @blog.comments.order('updated_at desc').only_parent_comments
+    if @blog.present?
+      @left_blogs ||= Blog.text_search(params[:query]).order('visitors_count desc').page(params[:page]).per_page(5)
+      @center_blogs ||= Blog.text_search(params[:query]).order('created_at desc').page(params[:page]).per_page(5)
+      @right_blogs ||= Blog.text_search(params[:query]).sort_by_comments.page(params[:page]).per_page(5)
+
+      if params[:direction].present?
+        @comments ||= @blog.comments.order("updated_at #{params[:direction].downcase}").only_parent_comments
+      elsif params[:basis].present?
+        @comments ||= @blog.comments.sort_by_top_comments.only_parent_comments
+      else
+        @comments ||= @blog.comments.order('updated_at desc').only_parent_comments
+      end
     end
   end
 
