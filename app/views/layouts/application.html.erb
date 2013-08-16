@@ -36,7 +36,7 @@
   </head>
 
   <body>
-    <%= nav_bar :brand => "MashableBlog", :brand_link => :root, :responsive => true do %>
+    <%= nav_bar :brand => "Mashable", :brand_link => :root, :responsive => true do %>
       <%= menu_group pull: :left do %>
         <% Category.only_parent_categories.each do |cat| %>
           <% if cat.present? %>
@@ -46,30 +46,17 @@
       <% end %>
 
       <%= menu_group pull: :right do %>
-        <%= link_to 'Search', 'javascript:void(0);', id: 'openSearchDialog', class: 'btn', :'data-html' => true, :'data-placement' => 'bottom', :'data-trigger' => 'click', :'data-content' => "<form method='get' src='#{blogs_path}'><input type='text' name='query' id='query' class='form-control'><input type='submit' value='Submit' class='btn btn-default'></form>" %>
+        <%= content_tag :a, 'Search', href: 'javascript:void(0);', id: 'openSearchDialog', class: 'btn', :data => { :html => true, :placement => 'bottom', :trigger => 'click', :content => "<form method='get' src='#{blogs_path}'><input type='text' name='query' id='query' class='form-control'><input type='submit' value='Submit' class='btn btn-default'></form>" } %>
 
         <% if current_user %>
+          <%= image_tag(current_user.profile_pic, size: '34x34') if current_user.profile_pic.present? %>
           <%= link_to 'Sign out', signout_path, class: 'btn btn-default', style: 'margin-left: 1em;' %>
         <% else %>
-          <button type="button" data-toggle="modal" data-target="#loginModal" class="btn btn-default" style='margin-left: 1em;'>Login</button>
+          <%= content_tag :a, "Login", href: "#loginModal", class: 'btn', :data => { :toggle => 'modal' }, style: 'margin-left: 1em;' %>
         <% end %>
       <% end %>
 
-      <!-- Modal -->
-      <div class="modal fade" id="loginModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title">Social Login</h4>
-            </div>
-            <div class="modal-body">
-              <%= link_to 'Sign in with facebook', '/auth/facebook', class: 'btn btn-default', style: 'margin-left: 1em;' %>
-              <%= link_to 'Sign in with google', '/auth/google', class: 'btn btn-default', style: 'margin-left: 1em;' %>
-            </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
+      <%= modal_dialog id: 'loginModal', header: { show_close: true, dismiss: 'modal', title: 'Social Login' }, body: content_tag(:a, 'Sign in with facebook', href: '/auth/facebook', class: 'btn', style: 'margin-left: 1em;') + content_tag(:a, 'Sign in with google', href: '/auth/google', class: 'btn', style: 'margin-left: 1em;') %>
     <% end %>
 
     <div class="container-fluid">

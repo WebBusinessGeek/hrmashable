@@ -16,11 +16,6 @@
     </div>
     <div class='row-fluid'>
       <div class='span12'>
-        <%= blog.description if blog.description.present? %>
-      </div>
-    </div>
-    <div class='row-fluid'>
-      <div class='span12'>
         </br>
         <a href="<%= blog_path(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) %>">
           <span class='st_facebook_hcount' displayText='Share' st_title="<%= blog.title %>" st_url="<%= blog_url(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) %>" st_summary="<%= simple_format(blog.description) if blog.description.present? %>" st_image="<%= blog.main_pic.url if blog.main_pic.present? %>"></span>
