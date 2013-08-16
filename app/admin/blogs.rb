@@ -43,6 +43,7 @@ ActiveAdmin.register Blog do
     f.inputs '' do
       f.input :author, include_blank: false, collection: Author.all.map { |author| [author.username, author.id] }
       f.input :category, include_blank: false
+      f.input :tags, as: :check_boxes, multiple: true
       f.input :title
       f.input :description
       f.input :main_pic

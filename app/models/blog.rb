@@ -1,5 +1,5 @@
 class Blog < ActiveRecord::Base
-  attr_accessible :description, :slug, :title, :author_id, :category_id, :main_pic
+  attr_accessible :description, :slug, :title, :author_id, :category_id, :main_pic, :tag_ids
 
   extend FriendlyId
   friendly_id :title, use: :slugged
