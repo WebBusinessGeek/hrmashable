@@ -12,3 +12,11 @@
   *= require jquery.ui.all
   *= require_tree .
 */
+
+.control-label {
+  font-weight: bold;
+}
+
+.hgroup {
+  background: url("/assets/hr_down_arrow.png") repeat-x scroll left bottom transparent; height: 72px;
+}

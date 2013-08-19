@@ -1,0 +1,156 @@
+<%= content_tag(:div, class: 'row-fluid') do %>
+  <%= content_tag(:div, class: 'span3') do %>
+    <%= content_tag(:div, class: 'profile-picture') do %>
+      <%= content_tag(:figure) do %>
+        <%= content_tag(:a, image_tag(@user.profile_pic_url, size: '200x200'), href: user_path(@user)) %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= content_tag(:div, class: 'span9') do %>
+    <%= content_tag(:div, class: 'info') do %>
+      <%= content_tag(:h1) do %>
+        <%= content_tag(:a, @user.full_name, href: user_path(@user)) %>
+      <% end %>
+      <%= content_tag(:div, '', class: 'profile-about') %>
+      <%= content_tag(:div, class: 'profile-buttons') do %>
+        <%= content_tag(:div, class: 'profile-actions') do %>
+          <%= content_tag(:a, 'Settings', href: edit_user_path(@user), class: 'btn') %>
+        <% end %>
+      <% end %>
+      <%= content_tag(:div, '', class: 'profile-networks') %>
+    <% end %>
+  <% end %>
+<% end %>
+</br>
+<%= content_tag(:section, class: 'profile-edit') do %>
+  <%= content_tag(:div, class: 'profile-menu') do %>
+    <%= content_tag(:ul, class: 'nav nav-tabs') do %>
+      <%= content_tag(:li, content_tag(:a, 'General', href: '#general', :'data-toggle' => 'tab'), class: 'active') %>
+      <%= content_tag(:li, content_tag(:a, 'Picture', href: '#picture', :'data-toggle' => 'tab')) %>
+      <%= content_tag(:li, content_tag(:a, 'Networks', href: '#networks', :'data-toggle' => 'tab')) %>
+      <%= content_tag(:li, content_tag(:a, 'Email & Notices', href: '#email-notices', :'data-toggle' => 'tab')) %>
+    <% end %>
+  <% end %>
+
+  <%= content_tag(:div, class: 'profile-content') do %>
+    <%= form_for @user, html: { class: 'form-horizontal', multipart: true } do |f| %>
+      <div class='tab-content'>
+        <div id='general' class='tab-pane active'>
+          <div class='control-group hgroup'>
+            <h3>General Settings</h3>
+          </div>
+
+          <div class="control-group">
+            <%= f.label :username, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :username, :class => 'text_field' %>
+              <p class="help-block">Your unique Mashable Follow username.</p>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :first_name, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :first_name, :class => 'text_field' %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :last_name, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :last_name, :class => 'text_field' %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :email, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :email, :class => 'text_field' %>
+              <p class="help-block">So we can give you important updates, and so you can subscribe to email alerts of your favorite Mashable topics.</p>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :gender, :class => 'control-label' %>
+            <div class="controls">
+              <label class='radio'>
+                <%= f.radio_button :gender, 'male' %>
+                <%= f.label :gender_male, 'Male' %>
+              </label>
+              <label class='radio'>
+                <%= f.radio_button :gender, 'female' %>
+                <%= f.label :gender_female, 'Female' %>
+              </label>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :birthday, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.date_select :birthday, :class => 'date_select' %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :zipcode, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.number_field :zipcode, :class => 'number_field' %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :about_me, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_area :about_me, rows: 10, cols: 80, :class => 'text_area' %>
+            </div>
+          </div>
+        </div>
+
+        <div id='picture' class='tab-pane'>
+          <div class='control-group hgroup'>
+            <h3>Email and Notification Settings</h3>
+          </div>
+
+          <div class="control-group">
+            <%= f.label 'From your networks', :class => 'control-label' %>
+            <div class="controls">
+              <%= image_tag(@user.profile_pic, style: 'height: 100px;') if @user.profile_pic.present? %>
+              <p class='help-block'>Select a picture from one of your connected accounts...</p>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= f.label 'Take a picture now', :class => 'control-label' %>
+            <div class="controls">
+              <%= f.file_field :profile_pic %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= f.label 'Image url', :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :remote_profile_pic_url, class: 'text_field' %>
+              <p class="help-block">...or upload a picture from one of your online photo albums.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id='networks' class='tab-pane'>
+          <div class='control-group hgroup'>
+            <h3>Connected Networks</h3>
+          </div>
+        </div>
+
+        <div id='email-notices' class='tab-pane'>
+          <div class='control-group hgroup'>
+            <h3>Email and Notification Settings</h3>
+          </div>
+
+          <% if !@user.email.present? %>
+            <div class='alert alert-error'>
+              You do not have an email address set. Please <a href="<%= edit_user_path(@user) %>">set an email address</a> to receive alerts and newsletter updates.
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class='form-actions last'>
+        <%= f.submit 'Save Settings', :class => 'btn btn-primary' %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

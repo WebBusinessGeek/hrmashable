@@ -19,7 +19,9 @@ MashableBlog::Application.routes.draw do
   }, as: 'blog'
 
   resources :categories, only: :show, path: 'category'
+  resources :users
 
+  get '/login' => 'users#login', as: 'login'
   match '/auth/:provider/callback', :to => 'sessions#create'
   match '/auth/failure', to: redirect('/')
   match '/signout', to: 'sessions#destroy', as: 'signout'

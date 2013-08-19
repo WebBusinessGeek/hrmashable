@@ -49,20 +49,25 @@
         <%= content_tag :a, 'Search', href: 'javascript:void(0);', id: 'openSearchDialog', class: 'btn', :data => { :html => true, :placement => 'bottom', :trigger => 'click', :content => "<form method='get' src='#{blogs_path}'><input type='text' name='query' id='query' class='form-control'><input type='submit' value='Submit' class='btn btn-default'></form>" } %>
 
         <% if current_user %>
-          <%= image_tag(current_user.profile_pic, size: '34x34') if current_user.profile_pic.present? %>
-          <%= link_to 'Sign out', signout_path, class: 'btn btn-default', style: 'margin-left: 1em;' %>
+          <%= image_tag(current_user.profile_pic_url, size: '34x34', style: 'margin-left: 1em;') if current_user.profile_pic.present? %>
+          <%= content_tag :a, 'Settings', href: edit_user_path(current_user), class: 'btn btn-default', style: 'margin-left: 1em;' %>
+          <%= content_tag :a, 'Sign out', href: signout_path, class: 'btn btn-default', style: 'margin-left: 1em;' %>
         <% else %>
-          <%= content_tag :a, "Login", href: "#loginModal", class: 'btn', :data => { :toggle => 'modal' }, style: 'margin-left: 1em;' %>
+          <%= content_tag :a, "Login", href: login_path, class: 'btn', :data => { toggle: 'modal', target: '#loginModal' }, style: 'margin-left: 1em;' %>
         <% end %>
       <% end %>
-
-      <%= modal_dialog id: 'loginModal', header: { show_close: true, dismiss: 'modal', title: 'Social Login' }, body: content_tag(:a, 'Sign in with facebook', href: '/auth/facebook', class: 'btn', style: 'margin-left: 1em;') + content_tag(:a, 'Sign in with google', href: '/auth/google', class: 'btn', style: 'margin-left: 1em;') %>
     <% end %>
 
     <div class="container-fluid">
       <%= bootstrap_flash %>
 
       <%= yield %>
+
+      <div class='row-fluid'>
+        <div class='span12'>
+          <%= content_tag(:div, content_tag(:div, '', class: 'modal-body'), id:'loginModal', class: 'modal hide fade', role: 'dialog') %>
+        </div>
+      </div>
 
       <footer>
         <hr>
