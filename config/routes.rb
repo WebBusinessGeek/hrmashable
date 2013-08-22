@@ -18,7 +18,8 @@ HRResourceToday::Application.routes.draw do
     day:  /\d{1,2}/
   }, as: 'blog'
 
-  resources :categories, only: :show, path: 'category'
+  resources :categories, only: :show
+  resources :tags, only: :show
   resources :users
 
   get '/login' => 'users#login', as: 'login'
