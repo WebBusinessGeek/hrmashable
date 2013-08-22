@@ -8,9 +8,9 @@
   * You're free to add application-wide styles to this file and they'll appear at the top of the
   * compiled file, but it's generally better to create a new file per style scope.
   *
-  *= require_self
   *= require jquery.ui.all
   *= require_tree .
+  *= require_self
 */
 
 .control-label {
@@ -20,3 +20,31 @@
 .hgroup {
   background: url("/assets/hr_down_arrow.png") repeat-x scroll left bottom transparent; height: 72px;
 }
+
+#main_body{
+  background-color: #F0EEE9;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+.container-fluid .container {
+  width: 100%;
+}
+
+@media (min-width: 980px) {
+  .container-fluid .container {
+    margin-top: 8%;
+  }
+}
+
+.replacespan{margin: 0px !important;padding: 0px !important;}
+.mostviewed{margin:0px !important;padding:0px !important;background: none repeat scroll 0 0 #FFFFFF; box-shadow: 0 6px 16px -9px rgba(0, 0, 0, 0.5) inset;}
+.mostrecent{margin:0px !important;padding:0px !important;background: none repeat scroll 0 0 #FFFFFF; box-shadow: 0 6px 16px -9px rgba(0, 0, 0, 0.5) inset;}
+.mostpopular{margin:0px !important;padding:0px !important;background: none repeat scroll 0 0 #FFFFFF; box-shadow: 0 6px 16px -9px rgba(0, 0, 0, 0.5) inset;}
+.mostviewedhead{background-color: #ffffff}
+.mostrecenthead{background-color: #7FC04C}
+.mostpopularhead{background-color: #ffffff}
