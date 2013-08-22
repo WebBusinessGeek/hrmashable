@@ -64,4 +64,11 @@ MashableBlog::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  MashableBlog::Application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "Exception Details: ",
+    :sender_address => %{"Exception Notifier" <notifier@grabsell.com>},
+    :exception_recipients => %w{kevw12188@gmail.com jony@idifysolutions.com}
+  }
 end
