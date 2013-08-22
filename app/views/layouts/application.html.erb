@@ -67,7 +67,7 @@
 
       <div class='row-fluid'>
         <div class='span12'>
-          <%= content_tag(:div, content_tag(:div, '', class: 'modal-body'), id:'loginModal', class: 'modal hide fade', role: 'dialog') %>
+          <%= content_tag(:div, content_tag(:div, content_tag(:a, 'X', class: 'close', :'data-dismiss' => 'modal'), class: 'modal-header') + content_tag(:div, '', class: 'modal-body'), id:'loginModal', class: 'modal hide fade', role: 'dialog') %>
         </div>
       </div>
 
