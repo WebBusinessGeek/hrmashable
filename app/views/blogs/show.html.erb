@@ -83,7 +83,7 @@
     <div class='row-fluid'>
       <div class='span8 offset4'>
         <% if !current_user %>
-          <b><%= link_to 'Sign in', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %></b>
+          <b><%= link_to 'Sign in', login_path, :'data-toggle' => 'modal', :'data-target' => '#loginModal' %></b>
         <% end %>
         <span class='pull-right'>
           <b><%= @blog.users.count %> people following</b>
@@ -109,14 +109,14 @@
               <%= link_to '+Follow', follow_blog_path(@blog.id), class: 'btn btn-default' %>
             <% end %>
           <% else %>
-            <%= link_to '+Follow', 'javascript:void(0);', class: 'btn btn-default', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
+            <%= link_to '+Follow', login_path, class: 'btn btn-default', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
           <% end %>
         </span>
         <span class='pull-right'>
           <% if current_user %>
             <%= link_to_function 'POST COMMENT', 'postComment()', class: 'btn btn-default' %>
           <% else %>
-            <%= link_to 'POST COMMENT', 'javascript:void(0);', class: 'btn btn-default', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
+            <%= link_to 'POST COMMENT', login_path, class: 'btn btn-default', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
           <% end %>
         </span>
       </div>
@@ -170,8 +170,8 @@
                     <%#= link_to_function 'Delete', "deleteComment(#{comment.id})", style: 'margin-left: 0.4em;' %>
                     <%= link_to 'Delete', delete_comment_blog_path(@blog.id, comment_id: comment.id), style: 'margin-left: 0.4em;' %>
                   <% else %>
-                    <%= link_to 'Share', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
-                    <%= link_to 'Delete', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
+                    <%= link_to 'Share', login_path, :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
+                    <%= link_to 'Delete', login_path, :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
                   <% end %>
                 </div>
                 <div class='pull-right'>
@@ -185,8 +185,8 @@
                     <% end %>
                     <%= link_to_function 'Reply', "replyComment(#{comment.id})" %>
                   <% else %>
-                    <%= link_to 'Like', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %> /
-                    <%= link_to 'Reply', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
+                    <%= link_to 'Like', login_path, :'data-toggle' => 'modal', :'data-target' => '#loginModal' %> /
+                    <%= link_to 'Reply', login_path, :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
                   <% end %>
                 </div>
               </div>

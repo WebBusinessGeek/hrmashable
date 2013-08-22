@@ -35,8 +35,8 @@ module BlogsHelper
                   # concat(link_to_function 'Delete', "deleteComment(#{reply.id})", style: 'margin-left: 0.4em;')
                   concat(link_to 'Delete', delete_comment_blog_path(@blog.id, comment_id: reply.id), style: 'margin-left: 0.4em;')
                 else
-                  concat(link_to 'Share', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal')
-                  concat(link_to 'Delete', 'javascript:void(0);', style: 'margin-left: 0.4em;', :'data-toggle' => 'modal', :'data-target' => '#loginModal')
+                  concat(link_to 'Share', login_path, :'data-toggle' => 'modal', :'data-target' => '#loginModal')
+                  concat(link_to 'Delete', login_path, style: 'margin-left: 0.4em;', :'data-toggle' => 'modal', :'data-target' => '#loginModal')
                 end
               end)
               concat(content_tag(:div, class: 'pull-right') do
@@ -51,9 +51,9 @@ module BlogsHelper
                   concat(' / ')
                   concat(link_to_function 'Reply', "replyComment(#{reply.id})")
                 else
-                  concat(link_to 'Like', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal')
+                  concat(link_to 'Like', login_path, :'data-toggle' => 'modal', :'data-target' => '#loginModal')
                   concat(' / ')
-                  concat(link_to 'Reply', 'javascript:void(0);', :'data-toggle' => 'modal', :'data-target' => '#loginModal')
+                  concat(link_to 'Reply', login_path, :'data-toggle' => 'modal', :'data-target' => '#loginModal')
                 end
               end)
             end)
