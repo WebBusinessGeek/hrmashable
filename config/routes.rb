@@ -1,4 +1,4 @@
-MashableBlog::Application.routes.draw do
+HRResourceToday::Application.routes.draw do
   root :to => 'blogs#index'
 
   resources :blogs, only: :index do
