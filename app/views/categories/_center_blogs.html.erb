@@ -18,9 +18,9 @@
       <div class='span12'>
         </br>
         <a href="<%= blog_path(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) %>">
-          <span class='st_facebook_hcount' displayText='Share' st_title="<%= blog.title %>" st_url="<%= blog_url(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) %>" st_summary="<%= simple_format(blog.description) if blog.description.present? %>" st_image="<%= blog.main_pic.url if blog.main_pic.present? %>"></span>
-          <span class='st_twitter_hcount' displayText='Tweet' st_title="<%= blog.title %>" st_url="<%= blog_url(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) %>" st_summary="<%= simple_format(blog.description) if blog.description.present? %>" st_image="<%= blog.main_pic.url if blog.main_pic.present? %>"></span>
-          <span class='st_googleplus_hcount' displayText='Share' st_title="<%= blog.title %>" st_url="<%= blog_url(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) %>" st_summary="<%= simple_format(blog.description) if blog.description.present? %>" st_image="<%= blog.main_pic.url if blog.main_pic.present? %>"></span>
+          <span class='st_facebook_hcount' displayText='Share' st_title="<%= blog.title %>" st_url="<%= blog_url(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) %>" st_summary="<%= raw(blog.description) if blog.description.present? %>" st_image="<%= blog.main_pic.url if blog.main_pic.present? %>"></span>
+          <span class='st_twitter_hcount' displayText='Tweet' st_title="<%= blog.title %>" st_url="<%= blog_url(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) %>" st_summary="<%= raw(blog.description) if blog.description.present? %>" st_image="<%= blog.main_pic.url if blog.main_pic.present? %>"></span>
+          <span class='st_googleplus_hcount' displayText='Share' st_title="<%= blog.title %>" st_url="<%= blog_url(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) %>" st_summary="<%= raw(blog.description) if blog.description.present? %>" st_image="<%= blog.main_pic.url if blog.main_pic.present? %>"></span>
         </a>
       </div>
     </div>

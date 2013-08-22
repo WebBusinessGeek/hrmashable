@@ -25,7 +25,7 @@ ActiveAdmin.register Blog do
       row :id
       row :title
       row :description do
-        simple_format blog.description
+        raw blog.description
       end
       row :main_pic do
         image_tag blog.main_pic

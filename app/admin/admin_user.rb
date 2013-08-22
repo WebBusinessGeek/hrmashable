@@ -1,4 +1,6 @@
 ActiveAdmin.register AdminUser do
+  menu label: 'Users'
+
   index do
     column :first_name
     column :last_name
@@ -34,7 +36,7 @@ ActiveAdmin.register AdminUser do
       row :birthday
       row :zipcode
       row :about_me do
-        simple_format admin_user.about_me
+        raw admin_user.about_me
       end
       row :profile_pic do
         image_tag admin_user.profile_pic

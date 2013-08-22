@@ -25,7 +25,7 @@ module BlogsHelper
             end)
             concat(content_tag(:div, class: 'row-fluid') do
               concat(content_tag(:div, class: 'span12') do
-                simple_format(reply.message) if reply.message.present?
+                raw(reply.message) if reply.message.present?
               end)
             end)
             concat(content_tag(:div, class: 'row-fluid') do
