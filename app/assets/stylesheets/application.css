@@ -47,9 +47,22 @@
   }
 }
 
-.replacespan {
+.left_blogs_container {
   margin: 0px !important;
   padding: 0px !important;
+  width: 24.5% !important;
+}
+
+.center_blogs_container {
+  margin: 0px !important;
+  padding: 0px !important;
+  width: 31.3% !important;
+}
+
+.right_blogs_container {
+  margin: 0px !important;
+  padding: 0px !important;
+  width: 44.2% !important;
 }
 
 .mostviewed {
@@ -82,7 +95,8 @@
 }
 
 .mostrecenthead {
-  background-color: #7FC04C;
+  background-color: #79D2F6;
+  color: #fff;
 }
 
 .mostrecenthead h5 {

@@ -12,7 +12,7 @@ class Blog < ActiveRecord::Base
   has_and_belongs_to_many :tags
   has_many :comments
 
-  validates :title, :author_id, :category_id, presence: true
+  validates :title, :author_id, :category_id, :main_pic, presence: true
 
   scope :sort_by_comments, -> { joins('LEFT OUTER JOIN comments ON comments.blog_id = blogs.id').group('blogs.id').order('count(comments.id) DESC') }
 

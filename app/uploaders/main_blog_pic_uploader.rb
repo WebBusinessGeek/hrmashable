@@ -36,6 +36,18 @@ class MainBlogPicUploader < CarrierWave::Uploader::Base
   #   process :scale => [50, 50]
   # end
 
+  version :small do
+    process :resize_to_fill => [175, 175]
+  end
+
+  version :medium do
+    process :resize_to_fill => [356, 205]
+  end
+
+  version :large do
+    process :resize_to_fill => [638, 368]
+  end
+
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
