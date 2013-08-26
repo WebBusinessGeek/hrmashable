@@ -72,7 +72,6 @@ ActiveAdmin.register AdminUser do
       f.input :zipcode
       f.input :about_me
       f.input :profile_pic
-      f.input :role, as: 'select', include_blank: false, collection: [ [ 'User', USER ], [ 'Admin', ADMIN ] ]
       f.input :slug
     end
 
