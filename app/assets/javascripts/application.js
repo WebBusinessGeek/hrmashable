@@ -15,3 +15,18 @@
 //= require jquery.ui.all
 //= require twitter/bootstrap
 //= require_tree .
+
+$(function() {
+  $('.left-blog-holder').mouseover(function() {
+    $(this).find('.left-blog-sharing').show();
+  });
+  $('.left-blog-holder').mouseout(function() {
+    $(this).find('.left-blog-sharing').hide();
+  });
+  $('.blog-holder').mouseover(function() {
+    $(this).find('.blog-sharing').show();
+  });
+  $('.blog-holder').mouseout(function() {
+    $(this).find('.blog-sharing').hide();
+  });
+});

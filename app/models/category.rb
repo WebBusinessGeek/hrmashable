@@ -10,5 +10,5 @@ class Category < ActiveRecord::Base
 
   validates :title, presence: true
 
-  scope :only_parent_categories, -> { where(parent_category_id: 0) }
+  scope :only_parent_categories, -> { where(parent_category_id: [0, nil]) }
 end

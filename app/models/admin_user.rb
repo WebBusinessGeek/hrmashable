@@ -12,4 +12,6 @@ class AdminUser < ActiveRecord::Base
   friendly_id :username, use: :slugged
 
   mount_uploader :profile_pic, UserProfilePicUploader
+
+  validates :profile_pic, presence: true
 end
