@@ -18,7 +18,20 @@
 }
 
 .hgroup {
-  background: url("/assets/hr_down_arrow.png") repeat-x scroll left bottom transparent; height: 72px;
+  background: url("/assets/hr_down_arrow.png") repeat-x scroll left bottom #fff;
+  z-index: 1;
+  height: 10ex;
+  left: 0;
+  border-top: 1px solid #DDDDDD;
+  margin-bottom: -1.1ex;
+  padding-left: 30px;
+  white-space: nowrap;
+}
+
+.hgroup > h2 {
+  color: #8A8C8E;
+  font: bold 3ex Arial,sans-serif;
+  line-height: 3ex;
 }
 
 #main_body{
