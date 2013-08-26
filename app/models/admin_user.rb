@@ -14,4 +14,9 @@ class AdminUser < ActiveRecord::Base
   mount_uploader :profile_pic, UserProfilePicUploader
 
   validates :profile_pic, presence: true
+
+  private
+  def password_required?
+    new_record? ? super : false
+  end
 end

@@ -65,8 +65,9 @@ ActiveAdmin.register AdminUser do
       f.input :last_name
       f.input :username
       f.input :email
-      f.input :remember_me, as: 'radio'
-      f.input :gender, as: 'radio'
+      f.input :password
+      f.input :password_confirmation
+      f.input :gender, as: 'radio', collection: [ [ 'Male', true ], [ 'Female', false ] ]
       f.input :birthday
       f.input :zipcode
       f.input :about_me
