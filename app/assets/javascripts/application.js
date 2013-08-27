@@ -18,15 +18,15 @@
 
 $(function() {
   $('.left-blog-holder').mouseover(function() {
-    $(this).find('.left-blog-sharing').show();
+    $(this).find('.left-blog-sharing').css('visibility', 'visible');
   });
   $('.left-blog-holder').mouseout(function() {
-    $(this).find('.left-blog-sharing').hide();
+    $(this).find('.left-blog-sharing').css('visibility', 'hidden');
   });
   $('.blog-holder').mouseover(function() {
-    $(this).find('.blog-sharing').show();
+    $(this).find('.blog-sharing').css('visibility', 'visible');
   });
   $('.blog-holder').mouseout(function() {
-    $(this).find('.blog-sharing').hide();
+    $(this).find('.blog-sharing').css('visibility', 'hidden');
   });
 });
