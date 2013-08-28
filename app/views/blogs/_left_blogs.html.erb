@@ -9,7 +9,7 @@
           </ul>
         </div>
         <div class='span9'>
-          <div class='row-fluid'>
+          <div class='row-fluid blog-title'>
             <div class='span12'>
               <%= link_to blog.title.upcase, blog_path(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) if blog.title.present? %>
             </div>
