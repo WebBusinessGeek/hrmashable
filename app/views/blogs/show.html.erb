@@ -5,11 +5,11 @@
     <div class='row-fluid'>
       <div class='span12'>
         <hgroup class="hgroup">
-          <h2 class='span10 pull-left'>
+          <h2 class='span8 pull-left'>
             <%=t '.title', :default => @blog.category.title.titleize if @blog.category.present? %>
           </h2>
-          <span class='span2 pull-right follow-mashable'>
-            Follow Mashable >
+          <span class='span4 pull-right follow-hr-resource'>
+            Follow HR Resource Today >
           </span>
         </hgroup>
       </div>
@@ -22,7 +22,7 @@
         <hgroup class="hgroup">
           <span class='st_fblike_hcount' displayText='Like' st_title="<%= @blog.title %>" st_url="<%= blog_url(@blog.created_at.strftime('%Y'), @blog.created_at.strftime('%m'), @blog.created_at.strftime('%d'), @blog.slug) %>" st_summary="<%= sanitize(@blog.description) if @blog.description.present? %>" st_image="<%= @blog.main_pic.url if @blog.main_pic.present? %>"></span>
           <span class='st_twitterfollow_hcount' displayText='Follow' st_username='sharethis' st_title="<%= @blog.title %>" st_url="<%= blog_url(@blog.created_at.strftime('%Y'), @blog.created_at.strftime('%m'), @blog.created_at.strftime('%d'), @blog.slug) %>" st_summary="<%= sanitize(@blog.description) if @blog.description.present? %>" st_image="<%= @blog.main_pic.url if @blog.main_pic.present? %>"></span>
-          <span class='st_plusone_hcount' displayText='Follow' st_title="<%= @blog.title %>" st_url="<%= blog_url(@blog.created_at.strftime('%Y'), @blog.created_at.strftime('%m'), @blog.created_at.strftime('%d'), @blog.slug) %>" st_summary="<%= sanitize(@blog.description) if @blog.description.present? %>" st_image="<%= @blog.main_pic.url if @blog.main_pic.present? %>"></span>
+          <span class='st_plusone_hcount' displayText='' st_title="<%= @blog.title %>" st_url="<%= blog_url(@blog.created_at.strftime('%Y'), @blog.created_at.strftime('%m'), @blog.created_at.strftime('%d'), @blog.slug) %>" st_summary="<%= sanitize(@blog.description) if @blog.description.present? %>" st_image="<%= @blog.main_pic.url if @blog.main_pic.present? %>"></span>
         </hgroup>
       </div>
     </div>
@@ -43,8 +43,8 @@
         <span class='st_facebook_vcount' displayText='Share' st_title="<%= @blog.title %>" st_url="<%= blog_url(@blog.created_at.strftime('%Y'), @blog.created_at.strftime('%m'), @blog.created_at.strftime('%d'), @blog.slug) %>" st_summary="<%= sanitize(@blog.description) if @blog.description.present? %>" st_image="<%= @blog.main_pic.url if @blog.main_pic.present? %>"></span>
         <span class='st_twitter_vcount' displayText='Tweet' st_title="<%= @blog.title %>" st_url="<%= blog_url(@blog.created_at.strftime('%Y'), @blog.created_at.strftime('%m'), @blog.created_at.strftime('%d'), @blog.slug) %>" st_summary="<%= sanitize(@blog.description) if @blog.description.present? %>" st_image="<%= @blog.main_pic.url if @blog.main_pic.present? %>"></span>
         <span class='st_googleplus_vcount' displayText='Share' st_title="<%= @blog.title %>" st_url="<%= blog_url(@blog.created_at.strftime('%Y'), @blog.created_at.strftime('%m'), @blog.created_at.strftime('%d'), @blog.slug) %>" st_summary="<%= sanitize(@blog.description) if @blog.description.present? %>" st_image="<%= @blog.main_pic.url if @blog.main_pic.present? %>"></span>
-        <span class='st_linkedin_vcount' displayText='' st_title="<%= @blog.title %>" st_url="<%= blog_url(@blog.created_at.strftime('%Y'), @blog.created_at.strftime('%m'), @blog.created_at.strftime('%d'), @blog.slug) %>" st_summary="<%= sanitize(@blog.description) if @blog.description.present? %>" st_image="<%= @blog.main_pic.url if @blog.main_pic.present? %>"></span>
-        <span class='st_stumbleupon_vcount' displayText='' st_title="<%= @blog.title %>" st_url="<%= blog_url(@blog.created_at.strftime('%Y'), @blog.created_at.strftime('%m'), @blog.created_at.strftime('%d'), @blog.slug) %>" st_summary="<%= sanitize(@blog.description) if @blog.description.present? %>" st_image="<%= @blog.main_pic.url if @blog.main_pic.present? %>"></span>
+        <span class='st_linkedin_vcount' displayText='Share' st_title="<%= @blog.title %>" st_url="<%= blog_url(@blog.created_at.strftime('%Y'), @blog.created_at.strftime('%m'), @blog.created_at.strftime('%d'), @blog.slug) %>" st_summary="<%= sanitize(@blog.description) if @blog.description.present? %>" st_image="<%= @blog.main_pic.url if @blog.main_pic.present? %>"></span>
+        <span class='st_stumbleupon_vcount' displayText='Share' st_title="<%= @blog.title %>" st_url="<%= blog_url(@blog.created_at.strftime('%Y'), @blog.created_at.strftime('%m'), @blog.created_at.strftime('%d'), @blog.slug) %>" st_summary="<%= sanitize(@blog.description) if @blog.description.present? %>" st_image="<%= @blog.main_pic.url if @blog.main_pic.present? %>"></span>
       </div>
     </div>
 
