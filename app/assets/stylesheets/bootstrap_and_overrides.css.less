@@ -35,9 +35,36 @@
 @navbarBrandColor: #fff;
 @navbarLinkColor: #fff;
 
-.brand {
-  border: 1px solid #fff;
+@font-face {
+	font-family: 'NEUROPOL1';
+	src: url(NEUROPOL.ttf);
 }
+
+@font-face {
+	font-family: 'MuseoSlabLight';
+	src: url(MuseoSlab300.eot?#iefix),
+		 url(MuseoSlab300.woff),
+		 url(MuseoSlab300.ttf);
+}
+@font-face {
+	font-family: 'MuseoSlabRegular';
+	src: url(MuseoSlab500.eot?#iefix),
+		 url(MuseoSlab500.woff), 
+		 url(MuseoSlab500.ttf);
+}
+@font-face {
+	font-family: 'ProximaNovaRegular';
+	src: url(ProximaNovaReg.eot?#iefix),
+		 url(ProximaNovaReg.woff),
+		 url(ProximaNovaReg.ttf);
+}
+@font-face {
+	font-family: 'ProximaNovaBold';
+	src: url(ProximaNovaExtraBold.eot?#iefix),
+		 url(ProximaNovaExtraBold.woff),
+		 url(ProximaNovaExtraBold.ttf);
+}
+
 
 .modal-header {
   border-bottom: none !important;
@@ -59,7 +86,7 @@
 }
 
 .blog-holder .blog-category {
-  padding: 2ex 0px 0px 2ex;
+  padding: 2ex 0px 0px 12px;
   width: 96%;
 }
 
@@ -70,11 +97,11 @@
 }
 
 #center_blogs .blog-title {
-  padding-top: 2ex;
+  padding-top: 12px;
 }
 
 .blog-holder .blog-title {
-  padding: 0ex 0px 0px 2ex;
+  padding: 0ex 0px 0px 12px;
   width: 96%;
 }
 
@@ -139,8 +166,9 @@
   font-size: 12px;
 }
 
-.hgroup > span.span2 {
+.hgroup > span.span4 {
   margin-top: 2.5ex;
+  text-align:right;
 }
 
 .container .span3 {
@@ -194,7 +222,7 @@
   width: 100%;
 }
 
-.follow-mashable {
+.follow-hr-resource {
   text-transform: uppercase;
 }
 
@@ -203,7 +231,7 @@
 }
 
 .article h2 {
-  font-family: museo-slab, sans-serif;
+  font-family: MuseoSlabLight, sans-serif;
   font-size: 48px;
   font-weight: 300;
   line-height: 55px;
@@ -222,7 +250,17 @@
 
 .blog-title {
   word-wrap: break-word;
-  font-family: museo-slab, sans-serif;
+  font-size: 24px;
+  text-transform: capitalize;
+  font-family: 'MuseoSlabLight', sans-serif;
+}
+
+.left-blog-holder .blog-title {
+  font-size: 16px !important;
+}
+
+.withshow .blog-title {
+  font-size: 16px !important;
 }
 
 .blog-description {
@@ -235,4 +273,15 @@
 
 .blog-sharing a {
   width: 100% !important;
+}
+.blog-sharing a:hover {
+  background-color:transparent !important;
+  text-decoration:none;
+  width: 100% !important;
+}
+.stTwitterFollowFrame {
+    width: 95px !important;
+}
+.st_plusone_hcount div {
+    vertical-align:bottom !important;
 }

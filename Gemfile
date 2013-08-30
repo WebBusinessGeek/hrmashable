@@ -31,3 +31,4 @@ gem 'omniauth-linkedin', '~> 0.1.0'
 gem 'omniauth-google-oauth2', '~> 0.2.1'
 gem 'likeit', '~> 0.0.2'
 gem 'exception_notification', '~> 4.0.0'
+gem "ckeditor", "~> 4.0.4"
