@@ -1,4 +1,6 @@
 HRResourceToday::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+
   root :to => 'blogs#index'
 
   resources :blogs, only: :index do

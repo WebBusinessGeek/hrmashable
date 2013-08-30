@@ -52,6 +52,9 @@ GEM
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
+    ckeditor (4.0.4)
+      mime-types
+      orm_adapter
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -222,6 +225,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin (~> 0.6.0)
   carrierwave (~> 0.9.0)
+  ckeditor (~> 4.0.4)
   coffee-rails (~> 3.2.1)
   exception_notification (~> 4.0.0)
   friendly_id (~> 4.0.9)

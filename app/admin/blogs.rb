@@ -1,7 +1,9 @@
 ActiveAdmin.register Blog do
   index do
     column :title
-    column :description
+    column :description do |blog|
+      sanitize(blog.description)
+    end
     column :slug
     column :author do |blog|
       blog.author.username
@@ -25,7 +27,7 @@ ActiveAdmin.register Blog do
       row :id
       row :title
       row :description do
-        raw blog.description
+        sanitize(blog.description)
       end
       row :main_pic do
         image_tag blog.main_pic
@@ -45,7 +47,7 @@ ActiveAdmin.register Blog do
       f.input :category, include_blank: false
       f.input :tags, as: :check_boxes, multiple: true
       f.input :title
-      f.input :description
+      f.input :description, :as => :ckeditor, :input_html => { :ckeditor => { :autoGrow_onStartup => true } }
       f.input :main_pic
       f.input :slug
     end
