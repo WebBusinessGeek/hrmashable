@@ -17,7 +17,7 @@
           <div class='row-fluid left-blog-sharing'>
             <div class='span12'>
               <a href='javascript:void(0);'>
-                <span class='st_sharethis_hcount' displayText='Share' st_title="<%= blog.title %>" st_url="<%= blog_url(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) %>" st_summary="<%= sanitize(blog.description) if blog.description.present? %>" st_image="<%= blog.main_pic.url if blog.main_pic.present? %>"></span> / <%= last_updated_at(blog.updated_at) %>
+                <span class='st_sharethis_hcount' displayText='Share' st_title="<%= blog.title %>" st_url="<%= blog_url(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug) %>" st_summary="<%= short_description(blog.description) if blog.description.present? %>" st_image="<%= blog.main_pic.url if blog.main_pic.present? %>"></span> / <%= last_updated_at(blog.updated_at) %>
               </a>
             </div>
           </div>
