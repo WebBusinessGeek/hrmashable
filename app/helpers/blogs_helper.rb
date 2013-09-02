@@ -82,4 +82,9 @@ module BlogsHelper
       "#{Time.diff(Time.now, time, '%S')[:diff]} ago"
     end
   end
+  
+  def short_description(string , len = 200)
+	string_temp = strip_tags(string)
+	return_string = string_temp[0..len]
+  end
 end
