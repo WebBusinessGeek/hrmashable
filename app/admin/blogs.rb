@@ -2,7 +2,7 @@ ActiveAdmin.register Blog do
   index do
     column :title
     column :description do |blog|
-      sanitize(blog.description)
+      strip_tags(blog.description)[0..200]
     end
     column :slug
     column :author do |blog|
