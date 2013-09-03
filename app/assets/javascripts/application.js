@@ -19,9 +19,11 @@
 $(function() {
   $('.left-blog-holder').mouseover(function() {
     $(this).find('.left-blog-sharing').css('visibility', 'visible');
+    $(this).find('.left-blog-shares').css('visibility', 'hidden');
   });
   $('.left-blog-holder').mouseout(function() {
     $(this).find('.left-blog-sharing').css('visibility', 'hidden');
+    $(this).find('.left-blog-shares').css('visibility', 'visible');
   });
   $('.blog-holder').mouseover(function() {
     $(this).find('.blog-sharing').css('visibility', 'visible');
