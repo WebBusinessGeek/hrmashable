@@ -16,11 +16,11 @@
           </div>
           <div style="position:relative;">
 			  <div class='row-fluid left-blog-shares'>
-				<span id='sharecount_<%=blog.id%>'></span> SHARES / <%= last_updated_at(blog.updated_at) %>
+				<span id='leftsharecount_<%=blog.id%>'></span> SHARES / <%= last_updated_at(blog.updated_at) %>
 				<%= content_for :custom_javascripts do %>
 						//Pass in the url,social service for which you need count
 							//It will populate the innerHtml of the element passed for the service.
-						stButtons.getCount('<%=blog_url(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug)%>',"total", document.getElementById('sharecount_<%=blog.id%>'));
+						stButtons.getCount('<%=blog_url(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug)%>',"total", document.getElementById('leftsharecount_<%=blog.id%>'));
 				<% end %>
 			  </div>
 			  <div class='left-blog-sharing'>

@@ -27,8 +27,10 @@ $(function() {
   });
   $('.blog-holder').mouseover(function() {
     $(this).find('.blog-sharing').css('visibility', 'visible');
+    $(this).find('.blog-shares').css('visibility', 'hidden');
   });
   $('.blog-holder').mouseout(function() {
     $(this).find('.blog-sharing').css('visibility', 'hidden');
+    $(this).find('.blog-shares').css('visibility', 'visible');
   });
 });

@@ -113,7 +113,6 @@
 .blog-holder .blog-sharing {
   padding: 2ex 0px 0px 0.5ex;
   width: 96%;
-  display: none;
 }
 
 .blog-holder > .thumbnails {
@@ -126,7 +125,7 @@
 
 .left-blog-holder {
   padding: 0 20px 25px 20px;
-  overflow:auto;
+  /*overflow:auto; */
 }
 
 .left-blog-holder > div,ul {
@@ -156,12 +155,35 @@
   min-height: 53px;
 }
 .left-blog-shares {
+  left:0;
+  top:0;
   position: absolute;
+  color: #AAAAAA;
+  font-size: 12px;
 }
-.left-blog-sharing, .thumbnails .blog-sharing {
+.blog-shares {
+  left:0;
+  top:0;
+  position: absolute;
+  color: #AAAAAA;
+  font-size: 12px;
+  padding: 0ex 0px 0px 12px;
+  width: 96%;
+  margin-top: 10px;
+}
+.left-blog-sharing {
+  left:0;
+  top:0;
   position: absolute;
   visibility: hidden
 }
+.thumbnails .blog-sharing {
+  padding: 0ex 0px 0px 12px;
+  width: 96%;
+  margin-top: 10px;
+  visibility: hidden
+}
+
 
 .left-blog-sharing a {
   color: #AAAAAA;
@@ -253,6 +275,7 @@
 .blog-title {
   word-wrap: break-word;
   font-size: 24px;
+  line-height:2ex;
   text-transform: capitalize;
   font-family: 'MuseoSlabLight', sans-serif;
 }
@@ -291,3 +314,17 @@
 .navbar .nav > li > a:hover {
   color:#6DC1E6
 }
+
+.showpageshares{ color: #7FC04C;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 80px;
+    
+    }
+.showsharedivider{ background: url("/assets/splitter.png") no-repeat scroll center center transparent;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 80px;
+    }
