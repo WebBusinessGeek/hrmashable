@@ -67,7 +67,13 @@
     <%= javascript_include_tag "application" -%>
     <%= javascript_tag defer: 'defer' do -%>
       var switchTo5x=true;
-      stLight.options({publisher: "ur-eaeb65d0-be5a-d951-5cc-af9aa51cc92e", doNotHash: true, doNotCopy: true, hashAddressBar: false});
+      stLight.options({
+		  publisher: "ur-eaeb65d0-be5a-d951-5cc-af9aa51cc92e", 
+		  doNotHash: true, 
+		  doNotCopy: true, 
+		  hashAddressBar: false, 
+		  onhover: false
+	  });
 
       $(function() {
         $('#openSearchDialog').popover();

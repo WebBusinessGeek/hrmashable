@@ -18,6 +18,15 @@
               <%= short_description(blog.description) if blog.description.present? %>
             </div>
           </div>
+	    <div class="row-fluid" style="position:relative;">
+		  <div class='row-fluid blog-shares'>
+			<span id='rightsharecount_<%=blog.id%>'></span> SHARES / <%= last_updated_at(blog.updated_at) %>
+			<%= content_for :custom_javascripts do %>
+					//Pass in the url,social service for which you need count
+						//It will populate the innerHtml of the element passed for the service.
+					stButtons.getCount('<%=blog_url(blog.created_at.strftime('%Y'), blog.created_at.strftime('%m'), blog.created_at.strftime('%d'), blog.slug)%>',"total", document.getElementById('rightsharecount_<%=blog.id%>'));
+			<% end %>
+		  </div>
           <div class='row-fluid blog-sharing'>
             <div class='span12'>
               <a href='javascript:void(0);'>
@@ -27,6 +36,8 @@
               </a>
             </div>
           </div>
+	      <div class="clear"></div>
+	    </div>
         </li>
       </ul>
     </div>
