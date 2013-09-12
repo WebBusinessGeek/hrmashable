@@ -202,7 +202,7 @@ ActiveAdmin.setup do |config|
   #
   # config.default_per_page = 30
   config.default_per_page = 10
-
+  config.authorization_adapter = ActiveAdmin::CanCanAdapter
   # == Filters
   #
   # By default the index screen includes a “Filters” sidebar on the right
