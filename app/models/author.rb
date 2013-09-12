@@ -1,13 +1,7 @@
-class Author < AdminUser
-  has_many :blogs
+class Author < ActiveRecord::Base
+  attr_accessible :name, :profile_pic
 
-  def full_name
-    "#{self.first_name} #{self.last_name}"
-  end
-
-  private
-
-  def is_admin?
-    true
-  end
+  mount_uploader :profile_pic, AuthorProfilePicUploader
+  
+  validates :name, :profile_pic, presence: true
 end

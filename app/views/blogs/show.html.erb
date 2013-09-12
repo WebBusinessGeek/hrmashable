@@ -65,7 +65,7 @@
         <%= image_tag(@blog.author.profile_pic_url, size: '90x90') if @blog.author.profile_pic.present? %>
         </br>
         <span class='author-name'>
-          By <%= @blog.author.full_name %>
+          By <%= @blog.author.name %>
         </span>
         </br>
         <span class='time'>

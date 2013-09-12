@@ -6,7 +6,7 @@ ActiveAdmin.register Blog do
     end
     column :slug
     column :author do |blog|
-      blog.author.username
+      blog.author.name
     end
     column :category
     column :visitors_count
@@ -43,7 +43,7 @@ ActiveAdmin.register Blog do
 
   form do |f|
     f.inputs '' do
-      f.input :author, include_blank: false, collection: Author.all.map { |author| [author.username, author.id] }
+      f.input :author, include_blank: false, collection: Author.all.map { |author| [author.name, author.id] }
       f.input :category, include_blank: false
       f.input :tags, as: :check_boxes, multiple: true
       f.input :title
