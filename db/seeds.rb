@@ -1,8 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
-Author.create(username: 'author1', email: 'author1@example.com', password: 'password', password_confirmation: 'password', role: ADMIN)
-User.create(username: 'user1', email: 'user1@example.com', password: 'password', password_confirmation: 'password', role: USER)
+#SuperAdmin.create(username: 'admin', email: 'admin@example.com', password: 'password', password_confirmation: 'password', role: SUPER_ADMIN)
 Category.create(title: 'Social Media')
   Category.create(title: 'Facebook', parent_category_id: 1)
   Category.create(title: 'Google+', parent_category_id: 1)
@@ -31,8 +30,3 @@ Tag.create(title: 'tag1')
 Tag.create(title: 'tag2')
 Tag.create(title: 'tag3')
 Tag.create(title: 'tag4')
-author = Author.find_by_email('author1@example.com')
-Blog.create(title: 'test blog 1', description: 'this is my first blog', author_id: author.id, category_id: 1).tags << Tag.find_by_id(1)
-Blog.create(title: 'test blog 2', description: 'this is my second blog', author_id: author.id, category_id: 7).tags << Tag.find_by_id(2)
-Blog.create(title: 'test blog 3', description: 'this is my third blog', author_id: author.id, category_id: 12).tags << Tag.find_by_id(3)
-Blog.create(title: 'test blog 4', description: 'this is my fourth blog', author_id: author.id, category_id: 19).tags << Tag.find_by_id(4)
