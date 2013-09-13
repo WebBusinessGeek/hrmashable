@@ -13,6 +13,10 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_tag do -%>
+      var __st_loadLate=true;
+    <% end %>
+    <%= javascript_include_tag "application" -%>
     <%= favicon_link_tag 'favicon.ico?ver=2', :rel => 'shortcut icon' %>
   </head>
 
@@ -61,10 +65,6 @@
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_tag do -%>
-      var __st_loadLate=true;
-    <% end %>
-    <%= javascript_include_tag "application" -%>
     <%= javascript_tag defer: 'defer' do -%>
       var switchTo5x=true;
       stLight.options({
