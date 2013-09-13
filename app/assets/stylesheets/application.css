@@ -100,7 +100,8 @@
 }
 
 .mostviewedhead {
-  background-color: #FDFCFC;
+  background-color: #6C6C6C;  /* careerthing */
+  color: #FFFFFF;  /* careerthing */
 }
 
 .mostviewedhead h5 {
@@ -108,8 +109,8 @@
 }
 
 .mostrecenthead {
-  background-color: #79D2F6;
-  color: #fff;
+  background-color: #BCD114; /* careerthing */
+  color: #2B2D22;  /* careerthing */
 }
 
 .mostrecenthead h5 {
@@ -117,7 +118,8 @@
 }
 
 .mostpopularhead {
-  background-color: #FDFCFC;
+  background-color: #605399;  /* careerthing */
+  color: #FFFFFF;  /* careerthing */
 }
 
 .mostpopularhead h5 {
