@@ -50,13 +50,13 @@
 
 @media (min-width: 369px) {
   .container-fluid .container {
-    margin-top: 90px;
+    margin-top: 98px;
   }
 }
 
 @media (max-width: 369px) {
   .container-fluid .container {
-    margin-top: 110px;
+    margin-top: 118px;
   }
 }
 
@@ -100,7 +100,8 @@
 }
 
 .mostviewedhead {
-  background-color: #FDFCFC;
+  background-color: #2A80B1;  /* betarules */
+  color: #FFFFFF;  /* betarules */
 }
 
 .mostviewedhead h5 {
@@ -108,8 +109,8 @@
 }
 
 .mostrecenthead {
-  background-color: #79D2F6;
-  color: #fff;
+  background-color: #3F97C9; /* betarules */
+  color: #FFFFFF;  /* betarules */
 }
 
 .mostrecenthead h5 {
@@ -117,7 +118,8 @@
 }
 
 .mostpopularhead {
-  background-color: #FDFCFC;
+  background-color: #4D52A3;  /* betarules */
+  color: #FFFFFF;  /* betarules */
 }
 
 .mostpopularhead h5 {
