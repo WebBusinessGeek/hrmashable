@@ -21,7 +21,7 @@
   </head>
 
   <body id='main_body'>
-    <%= nav_bar :brand => image_tag(asset_path('horizontal1.png'), alt: 'HR Resource Today'), :brand_link => :root, :responsive => true do %>
+    <%= nav_bar :brand => image_tag(asset_path('logo.png'), alt: 'CareerThing'), :brand_link => :root, :responsive => true do %>
       <%= menu_group pull: :left do %>
         <% Category.only_parent_categories.each do |cat| %>
           <% if cat.present? %>
