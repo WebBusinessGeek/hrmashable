@@ -50,13 +50,13 @@
 
 @media (min-width: 369px) {
   .container-fluid .container {
-    margin-top: 90px;
+    margin-top: 97px;
   }
 }
 
 @media (max-width: 369px) {
   .container-fluid .container {
-    margin-top: 110px;
+    margin-top: 117px;
   }
 }
 
