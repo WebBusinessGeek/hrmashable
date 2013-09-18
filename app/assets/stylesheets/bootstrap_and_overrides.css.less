@@ -35,36 +35,43 @@
 @navbarBrandColor: #fff;
 @navbarLinkColor: #5568B4; /* betarules */
 
+
 @font-face {
-	font-family: 'NEUROPOL1';
-	src: url(NEUROPOL.ttf);
+    font-family: 'neuropolregular';
+    src: url('neuropol-webfont.eot');
+    src: url('neuropol-webfont.eot?#iefix') format('embedded-opentype'),
+         url('neuropol-webfont.woff') format('woff'),
+         url('neuropol-webfont.ttf') format('truetype'),
+         url('neuropol-webfont.svg#neuropolregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
 @font-face {
-	font-family: 'MuseoSlabLight';
-	src: url(MuseoSlab300.eot?#iefix),
-		 url(MuseoSlab300.woff),
-		 url(MuseoSlab300.ttf);
-}
-@font-face {
-	font-family: 'MuseoSlabRegular';
-	src: url(MuseoSlab500.eot?#iefix),
-		 url(MuseoSlab500.woff),
-		 url(MuseoSlab500.ttf);
-}
-@font-face {
-	font-family: 'ProximaNovaRegular';
-	src: url(ProximaNovaReg.eot?#iefix),
-		 url(ProximaNovaReg.woff),
-		 url(ProximaNovaReg.ttf);
-}
-@font-face {
-	font-family: 'ProximaNovaBold';
-	src: url(ProximaNovaExtraBold.eot?#iefix),
-		 url(ProximaNovaExtraBold.woff),
-		 url(ProximaNovaExtraBold.ttf);
+    font-family: 'steinerregular';
+    src: url('steinerlight-webfont.eot');
+    src: url('steinerlight-webfont.eot?#iefix') format('embedded-opentype'),
+         url('steinerlight-webfont.woff') format('woff'),
+         url('steinerlight-webfont.ttf') format('truetype'),
+         url('steinerlight-webfont.svg#steinerregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
+
+@font-face {
+    font-family: 'arapeyregular';
+    src: url('arapeyregular-webfont.eot');
+    src: url('arapeyregular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('arapeyregular-webfont.woff') format('woff'),
+         url('arapeyregular-webfont.ttf') format('truetype'),
+         url('arapeyregular-webfont.svg#arapeyregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 .navbar .nav > .active > a, .navbar .nav > .active > a:hover, .navbar .nav > .active > a:focus {
     color: #ffffff;
 }
@@ -228,7 +235,7 @@
 
 .author-name {
   color: #636466;
-  font-family: "ProximaNovaBold";
+  font-family: "neuropolregular";
   font-size: 2ex;
   font-weight: bold;
   text-transform: uppercase;
@@ -241,7 +248,7 @@
   font-weight: bold;
   line-height: 6em;
   padding-top: 1em;
-  font-family: "ProximaNovaRegular";
+  font-family: "neuropolregular";
 }
 
 .author-details img{ padding-bottom:0px;float:right;text-align:right;}
@@ -263,7 +270,7 @@
 }
 
 .article h2 {
-  font-family: MuseoSlabLight, sans-serif;
+  font-family: steinerregular, sans-serif;
   font-size: 48px;
   font-weight: 300;
   line-height: 55px;
@@ -271,7 +278,7 @@
 }
 
 .article .blog-description {
-  font-family: proxima-nova, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: arapeyregular, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 18px;
   vertical-align: baseline;
   color: #333333;
@@ -280,12 +287,16 @@
   word-wrap: break-word;
 }
 
+.article .blog-description p {
+  font-family: arapeyregular, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 .blog-title {
   word-wrap: break-word;
   font-size: 24px;
   line-height:2ex;
   text-transform: capitalize;
-  font-family: 'MuseoSlabLight', sans-serif;
+  font-family: 'steinerregular', sans-serif;
 }
 
 .left-blog-holder .blog-title {
@@ -300,8 +311,14 @@
   width: 90% !important;
   text-align: justify;
   word-wrap: break-word;
-  font-family: proxima-nova, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: arapeyregular, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #333333;
+  font-size: 2ex;
+}
+
+.blog-description p {
+  font-family: arapeyregular, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 2ex;
 }
 
 .blog-sharing a {
