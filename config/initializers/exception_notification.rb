@@ -3,7 +3,7 @@ require 'exception_notification/rails'
 ExceptionNotification.configure do |config|
   config.add_notifier :email, {
     :email_prefix => "Exception Details: ",
-    :sender_address => %{"Exception Notifier" <notifier@hrmashable.com>},
+    :sender_address => %{"Exception Notifier" <notifier@careerthing.com>},
     :exception_recipients => %w{kevw12188@gmail.com jony@idifysolutions.com sahil@idifysolutions.com},
     :delivery_method => :smtp,
     :smtp_settings => {
