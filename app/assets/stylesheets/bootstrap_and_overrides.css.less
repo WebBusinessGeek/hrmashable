@@ -29,11 +29,11 @@
 // Example:
 // @linkColor: #ff0000;
 
-@navbarBackground: #102E5E;
-@navbarBackgroundHighlight: #0A5489;
-@navbarText: #fff;
+@navbarBackground: #50ABE0; /* betarules */
+@navbarBackgroundHighlight: #B5DDF6; /* betarules */
+@navbarText: #4D52A3; /* betarules */
 @navbarBrandColor: #fff;
-@navbarLinkColor: #fff;
+@navbarLinkColor: #5568B4; /* betarules */
 
 @font-face {
 	font-family: 'NEUROPOL1';
@@ -65,17 +65,20 @@
 		 url(ProximaNovaExtraBold.ttf);
 }
 
+.navbar .nav > .active > a, .navbar .nav > .active > a:hover, .navbar .nav > .active > a:focus {
+    color: #ffffff;
+}
 
 .modal-header {
   border-bottom: none !important;
 }
 
 .navbar .pull-left > li > a {
-  line-height: 8ex;
+  line-height: 10.1ex;
 }
 
 .navbar .pull-right > a {
-  margin-top: 3ex;
+  margin-top: 6ex;
 }
 
 .blog-holder {
@@ -218,7 +221,7 @@
 }
 
 .follow, .comment, .follow:hover, .comment:hover, .follow:active, .comment:active, .follow:focus, .comment:focus {
-  background-color: #03A5E2;
+  background-color: #5568B4;
   background-image: none;
   color: #fff;
 }
@@ -250,7 +253,8 @@
   width: 100%;
 }
 
-.follow-hr-resource {
+.follow-betarules {
+  font-family: Tahoma;
   text-transform: uppercase;
 }
 
@@ -316,10 +320,17 @@
 }
 
 .navbar .nav > li > a:hover {
-  color:#6DC1E6
+  color:#fff /* betarules */
+}
+.navbar .brand{ padding: 5px 20px;}
+
+.navbar .nav > li > a
+{
+	padding: 25px 15px 0;
+	text-shadow:none;
 }
 
-.showpageshares{ color: #6DC1E6;
+.showpageshares{ color: #5568B4;
     font-size: 80px;
     font-style: normal;
     font-weight: bold;

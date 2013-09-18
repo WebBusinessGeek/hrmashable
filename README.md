@@ -1,4 +1,4 @@
-hrmashable
+betarules
 ==========
 
-Human Resource informational site
+BetaRules informational site

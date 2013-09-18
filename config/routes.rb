@@ -1,4 +1,4 @@
-HRResourceToday::Application.routes.draw do
+BetaRules::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
   root :to => 'blogs#index'
