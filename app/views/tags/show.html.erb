@@ -19,7 +19,7 @@
     </div>
 
     <div id='left_side_blogs' class='mostviewed'>
-      <%= render 'left_blogs', :blogs => @left_blogs %>
+      <%= render '/blogs/left_blogs', :blogs => @left_blogs %>
     </div>
   </div><!--/span-->
 
@@ -30,8 +30,8 @@
       </div>
     </div>
 
-    <div id='center_blogs' class='mostrecent'>
-      <%= render 'center_blogs', :blogs => @center_blogs %>
+    <div id='/blogs/center_blogs' class='mostrecent'>
+      <%= render '/blogs/center_blogs', :blogs => @center_blogs %>
     </div>
   </div><!--/span-->
 
@@ -43,7 +43,7 @@
     </div>
 
     <div id='right_side_blogs' class='mostpopular'>
-      <%= render 'right_blogs', :blogs => @right_blogs %>
+      <%= render '/blogs/right_blogs', :blogs => @right_blogs %>
     </div>
   </div>
 </div>
