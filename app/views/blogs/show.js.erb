@@ -1,6 +1,6 @@
-$('#left_side_blogs').append("<%= j render 'left_blogs', :blogs => @left_blogs %>")
-$('#center_blogs').append("<%= j render 'center_blogs', :blogs => @center_blogs %>")
-$('.right_side_blogs').append("<%= j render 'right_blogs', :blogs => @right_blogs %>")
+$('#left_side_blogs').append("<%= j render '/blogs/left_blogs', :blogs => @left_blogs %>")
+$('#center_blogs').append("<%= j render '/blogs/center_blogs', :blogs => @center_blogs %>")
+$('.right_side_blogs').append("<%= j render '/blogs/right_blogs', :blogs => @right_blogs %>")
 
 <% if @left_blogs.next_page %>
   $('#left_side_blogs .pagination').replaceWith('<%= j will_paginate(@left_blogs) %>');
