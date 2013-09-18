@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-HRResourceToday::Application.load_tasks
+CareerThing::Application.load_tasks

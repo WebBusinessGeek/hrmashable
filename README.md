@@ -1,4 +1,4 @@
-hrmashable
+careerthing
 ==========
 
-Human Resource informational site
+Career Thing informational site
