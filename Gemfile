@@ -33,3 +33,4 @@ gem 'likeit', '~> 0.0.2'
 gem 'exception_notification', '~> 4.0.0'
 gem "ckeditor", "~> 4.0.4"
 gem "cancan"
+gem 'passenger'
