@@ -13,7 +13,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'puma', '~> 2.4.0'
 gem 'jquery-rails', '~> 3.0.4'
 gem 'jquery-ui-rails', '~> 4.0.4'
 gem 'less-rails', '~> 2.3.3'
