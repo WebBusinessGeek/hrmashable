@@ -1,6 +1,7 @@
 class Blog < ActiveRecord::Base
-  attr_accessible :description, :slug, :title, :author_id, :category_id, :main_pic, :tag_ids
-
+  attr_accessible :description, :slug, :title, :author_id, :category_id, :main_pic, :tag_ids, :temp_category
+  
+  attr_accessor :temp_category
   extend FriendlyId
   friendly_id :title, use: :slugged
 
@@ -8,6 +9,7 @@ class Blog < ActiveRecord::Base
 
   belongs_to :author
   belongs_to :category
+  
   has_and_belongs_to_many :users
   has_and_belongs_to_many :tags
   has_many :comments
