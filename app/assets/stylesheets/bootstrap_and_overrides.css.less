@@ -36,19 +36,6 @@
 @navbarLinkColor: #808080; /* careerthing */
 
 
-@font-face {
-    font-family: 'neuropolregular';
-    src: url('neuropol-webfont.eot');
-    src: url('neuropol-webfont.eot?#iefix') format('embedded-opentype'),
-         url('neuropol-webfont.woff') format('woff'),
-         url('neuropol-webfont.ttf') format('truetype'),
-         url('neuropol-webfont.svg#rawengulkdemibold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
 
 @font-face {
     font-family: 'arapeyregular';
@@ -62,6 +49,17 @@
 
 }
 
+@font-face {
+    font-family: 'marlbororegular';
+    src: url('marlbo-webfont.eot');
+    src: url('marlbo-webfont.eot?#iefix') format('embedded-opentype'),
+         url('marlbo-webfont.woff') format('woff'),
+         url('marlbo-webfont.ttf') format('truetype'),
+         url('marlbo-webfont.svg#marlbororegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 @font-face {
     font-family: 'rawengulkdemibold';
@@ -69,7 +67,7 @@
     src: url('rawengulkdemibold-webfont.eot?#iefix') format('embedded-opentype'),
          url('rawengulkdemibold-webfont.woff') format('woff'),
          url('rawengulkdemibold-webfont.ttf') format('truetype'),
-         url('rawengulkdemibold-webfont.svg#neuropolregular') format('svg');
+         url('rawengulkdemibold-webfont.svg#rawengulkdemibold') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -254,9 +252,9 @@
   font-family: "arapeyregular";
 }
 
-.author-details img{ padding-bottom:0px;float:right;text-align:right;}
-.author-details .time{line-height:auto;padding-top:0px;font-size:16px;float:right;text-align:right;line-height:2em;}
-.author-details .author-name{float:right;text-align:right;}
+.author-details img{ padding-bottom:0px;float:left;text-align:left;}
+.author-details .time{line-height:auto;padding-top:0px;font-size:16px;float:left;text-align:left;line-height:2em;}
+.author-details .author-name{float:left;text-align:left;}
 
 .blog-category > .span3 .hgroup {
   line-height: 5ex;
@@ -275,8 +273,8 @@
 }
 
 .article h2 {
-  font-family: neuropolregular, sans-serif;
-  font-size: 48px;
+  font-family: marlbororegular, sans-serif;
+  font-size: 55px;
   font-weight: 300;
   line-height: 55px;
   word-wrap: break-word;
@@ -301,15 +299,15 @@
   font-size: 24px;
   line-height:2ex;
   text-transform: capitalize;
-  font-family: 'neuropolregular', sans-serif;
+  font-family: 'marlbororegular', sans-serif;
 }
 
 .left-blog-holder .blog-title {
-  font-size: 16px !important;
+  font-size: 19px !important;
 }
 
 .withshow .blog-title {
-  font-size: 16px !important;
+  font-size: 19px !important;
 }
 
 .blog-description {
@@ -318,12 +316,14 @@
   word-wrap: break-word;
   font-family: rawengulkdemibold, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #333333;
-  font-size: 2ex;
+  font-size: 18px;
+  line-height:24px;
 }
 
 .blog-description p{
   font-family: rawengulkdemibold, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 1.5ex;
+  font-size: 18px;
+  line-height:27px;
 }
 
 .blog-sharing a {
@@ -364,3 +364,5 @@
     font-weight: bold;
     line-height: 80px;
     }
+    
+.navbar .nav .dropdown-toggle .caret{margin-top:33px;}

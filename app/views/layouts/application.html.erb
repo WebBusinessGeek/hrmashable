@@ -22,14 +22,21 @@
 
   <body id='main_body'>
     <%= nav_bar :brand => image_tag(asset_path('careerthinglogo.png'), alt: 'CareerThing'), :brand_link => :root, :responsive => true do %>
-      <%= menu_group pull: :left do %>
+      <ul class="nav pull-left">
         <% Category.only_parent_categories.each do |cat| %>
           <% if cat.present? %>
-            <%= menu_item cat.title.upcase, category_path(cat.slug) %>
-          <% end %>
+            <% if cat.child_categories.count == 0 %>
+	            <li><a href="<%=category_path(cat.slug)%>"><%=cat.title.upcase%></a></li>
+            <% else %>
+	            <li class="dropdown">
+                <a class="dropdown-toggle" href="<%=category_path(cat.slug)%>"><%=cat.title.upcase%> <b class="caret"></b></a>
+                <%=show_sub_category_menus(cat,'').html_safe() %>
+              </li>
+            <% end %>
+          <% end%>
         <% end %>
-      <% end %>
-
+      </ul>
+      
       <%= menu_group pull: :right do %>
         <%= content_tag :a, 'Search', href: 'javascript:void(0);', id: 'openSearchDialog', class: 'btn', :data => { :html => true, :placement => 'bottom', :trigger => 'click', :content => "<form method='get' src='#{blogs_path}'><input type='text' name='query' id='query' class='form-control'><input type='submit' value='Submit' class='btn btn-default'></form>" } %>
 
