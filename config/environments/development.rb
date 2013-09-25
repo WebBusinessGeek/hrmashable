@@ -19,7 +19,7 @@ BetaRules::Application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   # Enable threaded mode
-  config.threadsafe!
+  #config.threadsafe!
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

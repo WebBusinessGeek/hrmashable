@@ -1,0 +1,6 @@
+<% if @sub_categories.present? %>
+<li style="padding:10px;"><label style="width:20%;float:left;">&nbsp;</label>
+<%= select :blog, :temp_category, options_for_select(@sub_categories, (params[:cid].present? ? params[:cid] : '')), {:prompt=>"Select Sub Category"}, {:class=>"blogcategory"} %>
+</li>
+<div class="nextdiv"></div>
+<% end %>

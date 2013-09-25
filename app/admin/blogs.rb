@@ -13,7 +13,49 @@ ActiveAdmin.register Blog do
 
     default_actions
   end
-
+  
+  controller do
+    def edit
+      @blog = Blog.find_by_slug(params[:id])
+      cur_category = @blog.category
+      @category = Array.new()
+      @category << cur_category.id
+      while cur_category.parent_category_id > 0
+        cur_category = cur_category.parent_category
+        @category << cur_category.id
+        @parent_category = cur_category.id
+      end
+    end
+    
+    def update    
+      cur_category = Category.find_by_id(params[:blog][:category_id])
+      @category = Array.new()
+      if cur_category.present?
+        @category << cur_category.id
+        while cur_category.parent_category_id.present? and cur_category.parent_category_id > 0
+          cur_category = cur_category.parent_category
+          @category << cur_category.id
+          @parent_category = cur_category.id
+        end
+      end
+      super
+    end
+    
+    def create    
+      cur_category = Category.find_by_id(params[:blog][:category_id])
+      @category = Array.new()
+      if cur_category.present?
+        @category << cur_category.id
+        while cur_category.parent_category_id.present? and cur_category.parent_category_id > 0
+          cur_category = cur_category.parent_category
+          @category << cur_category.id
+          @parent_category = cur_category.id
+        end
+      end
+      super
+    end
+  end
+  
   filter :author
   filter :category
   filter :title
@@ -40,18 +82,6 @@ ActiveAdmin.register Blog do
       row :updated_at
     end
   end
-
-  form do |f|
-    f.inputs '' do
-      f.input :author, include_blank: false, collection: Author.all.map { |author| [author.name, author.id] }
-      f.input :category, include_blank: false
-      f.input :tags, as: :check_boxes, multiple: true
-      f.input :title
-      f.input :description, :as => :ckeditor, :input_html => { :ckeditor => { :autoGrow_onStartup => true } }
-      f.input :main_pic
-      f.input :slug
-    end
-
-    f.actions
-  end
+  
+  form :partial => "form" 
 end

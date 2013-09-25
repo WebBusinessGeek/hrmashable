@@ -14,6 +14,12 @@ BetaRules::Application.routes.draw do
     end
   end
 
+  namespace :admin do
+    resources :categories do
+      get :get_sub_categories , on: :collection
+      get :sub_categories_dropdown , on: :collection
+    end
+  end
   get '/:year/:month/:day/:id' => 'blogs#show', constraints: {
     year:  /\d{4}/,
     month: /\d{1,2}/,
