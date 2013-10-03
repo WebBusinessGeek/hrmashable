@@ -11,7 +11,8 @@ class Authorization < ActiveRecord::Base
       u.first_name = auth.info.first_name
       u.last_name = auth.info.last_name
       u.username = auth.info.nickname
-      u.profile_pic = auth.info.image
+      u.profile_pic = auth.info.image      
+      u.password = Devise.friendly_token[0,20]
       u.save #!(validate: false)
       user.user_id = u.id
       user.provider = auth.provider
