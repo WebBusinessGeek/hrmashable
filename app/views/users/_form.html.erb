@@ -2,7 +2,7 @@
   <%= content_tag(:div, class: 'span3') do %>
     <%= content_tag(:div, class: 'profile-picture') do %>
       <%= content_tag(:figure) do %>
-        <%= content_tag(:a, image_tag(@user.profile_pic_url, size: '200x200'), href: user_path(@user)) %>
+        <%= content_tag(:a, image_tag(@user.profile_pic_url, size: '200x200'), href: user_path(@user)) if @user.profile_pic.present? %>
       <% end %>
     <% end %>
   <% end %>
