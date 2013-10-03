@@ -164,7 +164,7 @@
         <% @comments.each do |comment| %>
           <div class='row-fluid'>
             <div class='span1'>
-              <%= image_tag(comment.user.profile_pic, width: '100%') if comment.user.present? %>
+              <%= image_tag(comment.user.profile_pic, width: '100%') if comment.user.present? and comment.user.profile_pic.present? %>
             </div>
             <div class='span11'>
               <div class='row-fluid'>
