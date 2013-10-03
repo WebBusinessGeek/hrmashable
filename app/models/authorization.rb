@@ -12,7 +12,7 @@ class Authorization < ActiveRecord::Base
       u.last_name = auth.info.last_name
       u.username = auth.info.nickname
       u.profile_pic = auth.info.image
-      #u.save!(validate: false)
+      u.save #!(validate: false)
       user.user_id = u.id
       user.provider = auth.provider
       user.uid = auth.uid
