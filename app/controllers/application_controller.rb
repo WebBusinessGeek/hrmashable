@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def require_login
     if !current_user
-      redirect_to :back, alert: '<center><h5>You must be logged in to perform this action!</h5></center>'
+      redirect_to root_path, alert: '<center><h5>You must be logged in to perform this action!</h5></center>'
     end
   end
 

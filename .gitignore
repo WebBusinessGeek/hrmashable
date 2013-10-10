@@ -16,3 +16,4 @@
 /public
 /config/database.yml
 /db/schema.rb
+/.project
