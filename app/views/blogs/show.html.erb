@@ -185,7 +185,7 @@
                   <% if current_user %>
                     <%#= link_to 'Share', 'javascript:void(0);' %>
                     <%#= link_to_function 'Delete', "deleteComment(#{comment.id})", style: 'margin-left: 0.4em;' %>
-                    <%= link_to 'Delete', delete_comment_blog_path(@blog.id, comment_id: comment.id), style: 'margin-left: 0.4em;' %>
+                    <%= link_to('Delete', delete_comment_blog_path(@blog.id, comment_id: comment.id), style: 'margin-left: 0.4em;') if comment.user_id == current_user.id %>
                   <% else %>
                     <%#= link_to 'Share', login_path, :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
                     <%= link_to 'Delete', login_path, :'data-toggle' => 'modal', :'data-target' => '#loginModal' %>
